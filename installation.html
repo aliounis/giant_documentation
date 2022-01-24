@@ -120,6 +120,7 @@ home directory without needing admin privileges, which is a big benefit).</p>
 <li><p><code class="code docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">giant_env</span> <span class="pre">python=3</span> <span class="pre">opencv</span> <span class="pre">matplotlib</span> <span class="pre">scipy</span> <span class="pre">pandas</span> <span class="pre">numpy</span> <span class="pre">cython</span> <span class="pre">pyqt</span> <span class="pre">astropy</span> <span class="pre">lxml</span> <span class="pre">sphinx</span> <span class="pre">spiceypy</span> <span class="pre">c-compiler</span> <span class="pre">openmp</span> <span class="pre">astroquery</span> <span class="pre">dill</span> <span class="pre">psutil</span> <span class="pre">imagemagick</span></code></p></li>
 <li><p>Note that creating a new environment is not required, but is strongly recommended.</p></li>
 <li><p>Note that if you did not install mamba-forge, you need to specify to use the conda-forge repository instead of the default conda repository by adding <code class="code docutils literal notranslate"><span class="pre">-c</span> <span class="pre">conda-forge</span></code> to the <code class="code docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">create</span></code> command.</p></li>
+<li><p>Note that if you are on windows, you will unfortunately need to manually install vs2017 according to the instructions <a class="reference external" href="https://conda-forge.org/docs/maintainer/knowledge_base.html#local-testing">https://conda-forge.org/docs/maintainer/knowledge_base.html#local-testing</a></p></li>
 </ul>
 </dd>
 </dl>
@@ -214,7 +215,7 @@ though that is a problem</p></li>
       &copy;2021 United States Government.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
