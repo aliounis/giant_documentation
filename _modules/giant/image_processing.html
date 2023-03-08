@@ -10,10 +10,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <link rel="shortcut icon" href="../../_static/logo.ico"/>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="icon" href="../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
@@ -72,7 +71,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="documentwrapper">
@@ -119,7 +118,10 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.signal</span> <span class="k">as</span> <span class="nn">sig</span>
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fmin</span>
-<span class="kn">from</span> <span class="nn">scipy.fftpack.helper</span> <span class="kn">import</span> <span class="n">next_fast_len</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">scipy.fftpack</span> <span class="kn">import</span> <span class="n">next_fast_len</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">scipy.fftpack.helper</span> <span class="kn">import</span> <span class="n">next_fast_len</span>
 
 
 <span class="kn">from</span> <span class="nn">giant._typing</span> <span class="kn">import</span> <span class="n">ARRAY_LIKE</span><span class="p">,</span> <span class="n">ARRAY_LIKE_2D</span><span class="p">,</span> <span class="n">Real</span>
@@ -208,7 +210,7 @@
 
 
 <div class="viewcode-block" id="SubpixelEdgeMethods"><a class="viewcode-back" href="../../image_processing/giant.image_processing.SubpixelEdgeMethods.html#giant.image_processing.SubpixelEdgeMethods">[docs]</a><span class="k">class</span> <span class="nc">SubpixelEdgeMethods</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This enumeration provides the valid options for subpixel edge detection methods.</span>
 
 <span class="sd">    You should be sure to use one of these values when setting to the :attr:`.subpixel_method` attribute of the</span>
@@ -216,19 +218,19 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">PIXEL</span> <span class="o">=</span> <span class="s2">&quot;PIXEL&quot;</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Pixel level edges, no refining</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">PAE</span> <span class="o">=</span> <span class="s2">&quot;PAE&quot;</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Use Partial Area Effect to compute subpixel edge locations.</span>
 <span class="sd">    </span>
 <span class="sd">    See :meth:`.refine_edges_pae` for details.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">ZERNIKE_RAMP</span> <span class="o">=</span> <span class="s2">&quot;ZERNIKE_RAMP&quot;</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Use Zernike Ramp to compute subpixel edge locations</span>
 <span class="sd">    </span>
 <span class="sd">    See :meth:`.refine_edges_zernike_ramp` for details.</span>
@@ -236,7 +238,7 @@
 
 
 <div class="viewcode-block" id="ImageFlatteningNoiseApprox"><a class="viewcode-back" href="../../image_processing/giant.image_processing.ImageFlatteningNoiseApprox.html#giant.image_processing.ImageFlatteningNoiseApprox">[docs]</a><span class="k">class</span> <span class="nc">ImageFlatteningNoiseApprox</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This enumeration provides the valid options for flattening an image and determining the noise levels when</span>
 <span class="sd">    identifying points of interest in :meth:`.ImageProcessing.find_poi_in_roi`</span>
 
@@ -245,7 +247,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">GLOBAL</span> <span class="o">=</span> <span class="s2">&quot;GLOBAL&quot;</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Globally flatten the image and estimate the noise level from it.</span>
 <span class="sd">    </span>
 <span class="sd">    In this the image in flattened by subtracting a median filtered version of the image from it and a single noise </span>
@@ -255,7 +257,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">LOCAL</span> <span class="o">=</span> <span class="s2">&quot;LOCAL&quot;</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Locally flatten the image and estimate the noise levels for each local region</span>
 
 <span class="sd">    In this the image in flattened by splitting it into regions, estimating a linear background gradient in each region,</span>
@@ -268,7 +270,7 @@
 
 
 <div class="viewcode-block" id="local_maxima"><a class="viewcode-back" href="../../image_processing/giant.image_processing.local_maxima.html#giant.image_processing.local_maxima">[docs]</a><span class="k">def</span> <span class="nf">local_maxima</span><span class="p">(</span><span class="n">data_grid</span><span class="p">:</span> <span class="n">ARRAY_LIKE_2D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function returns a boolean mask selecting all local maxima from a 2d array.</span>
 
 <span class="sd">    A local maxima is defined as any value that is greater than or equal to all of the values surrounding it.  That is,</span>
@@ -343,7 +345,7 @@
 
 
 <div class="viewcode-block" id="cv2_correlator_2d"><a class="viewcode-back" href="../../image_processing/giant.image_processing.cv2_correlator_2d.html#giant.image_processing.cv2_correlator_2d">[docs]</a><span class="k">def</span> <span class="nf">cv2_correlator_2d</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">template</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">flag</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">TM_CCOEFF_NORMED</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function performs a 2D cross correlation between ``image`` and ``template`` and returns the correlation surface</span>
 <span class="sd">    using the `OpenCV matchTemplate function &lt;http://docs.opencv.org/3.1.0/d4/dc6/tutorial_py_template_matching.html&gt;`_.</span>
 
@@ -389,7 +391,7 @@
 
 
 <span class="k">def</span> <span class="nf">_normalize_xcorr_2d</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">zero_mean_temp</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">corr_surf</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function calculates normalized correlation coefficients between the template and the image based off of the</span>
 <span class="sd">    non-normalized correlation between temp and image.</span>
 
@@ -408,7 +410,7 @@
     <span class="c1"># the following code is based off of MATLAB&#39;s normxcorr2 which is based off of</span>
     <span class="c1"># Lewis, J. P. &quot;Fast normalized cross-correlation.&quot; Vision interface. Vol. 10. No. 1. 1995.</span>
     <span class="k">def</span> <span class="nf">local_sum</span><span class="p">(</span><span class="n">in_mat</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute the integral of in_mat over the given search areas.</span>
 
 <span class="sd">        :param in_mat: the matrix to be integrated</span>
@@ -462,7 +464,7 @@
 
 
 <div class="viewcode-block" id="fft_correlator_2d"><a class="viewcode-back" href="../../image_processing/giant.image_processing.fft_correlator_2d.html#giant.image_processing.fft_correlator_2d">[docs]</a><span class="k">def</span> <span class="nf">fft_correlator_2d</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">ARRAY_LIKE_2D</span><span class="p">,</span> <span class="n">template</span><span class="p">:</span> <span class="n">ARRAY_LIKE_2D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function performs normalized cross correlation between a template and an image in the frequency domain.</span>
 
 <span class="sd">    The correlation is performed over the full image, aligning the center of the template with every pixel in the image.</span>
@@ -521,7 +523,7 @@
 
 
 <div class="viewcode-block" id="spatial_correlator_2d"><a class="viewcode-back" href="../../image_processing/giant.image_processing.spatial_correlator_2d.html#giant.image_processing.spatial_correlator_2d">[docs]</a><span class="k">def</span> <span class="nf">spatial_correlator_2d</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">template</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function performs normalized cross correlation directly (spatial correlation).</span>
 
 <span class="sd">    The correlation is performed over the full image, aligning the center of the template with every pixel in the image.</span>
@@ -568,7 +570,7 @@
 
 
 <span class="k">def</span> <span class="nf">_normalize_xcorr_1d</span><span class="p">(</span><span class="n">extracted</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">zero_mean_predicted</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">corr_lines</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function normalizes correlation coefficients between 1d lines based off of the non-normalized correlation</span>
 <span class="sd">    between the 1d lines. This method works by computing the local standard deviation and mean of the extracted for</span>
 <span class="sd">    each overlay of the temps, then dividing the correlation surface by the difference of these values (roughly</span>
@@ -586,7 +588,7 @@
     <span class="c1"># Lewis, J. P. &quot;Fast normalized cross-correlation.&quot; Vision interface. Vol. 10. No. 1. 1995.</span>
 
     <span class="k">def</span> <span class="nf">local_sum</span><span class="p">(</span><span class="n">in_mat</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute the integral of in_mat over the given search areas.</span>
 
 <span class="sd">        :param in_mat: the matrix to be integrated</span>
@@ -635,7 +637,7 @@
 
 
 <span class="k">def</span> <span class="nf">_fft_correlate_1d</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function performs FFT based correlation on nd arrays of 1d scan lines.</span>
 
 <span class="sd">    :param a: array of 1d scan lines</span>
@@ -659,7 +661,7 @@
 
 
 <div class="viewcode-block" id="fft_correlator_1d"><a class="viewcode-back" href="../../image_processing/giant.image_processing.fft_correlator_1d.html#giant.image_processing.fft_correlator_1d">[docs]</a><span class="k">def</span> <span class="nf">fft_correlator_1d</span><span class="p">(</span><span class="n">extracted_lines</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">predicted_lines</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function performs 1d correlation based on extracted lines and predicted lines.</span>
 
 <span class="sd">    Each line of the input matrices should be a pair of scan lines to be correlated.  The result of this function</span>
@@ -697,7 +699,7 @@
 
 
 <div class="viewcode-block" id="otsu"><a class="viewcode-back" href="../../image_processing/giant.image_processing.otsu.html#giant.image_processing.otsu">[docs]</a><span class="k">def</span> <span class="nf">otsu</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Real</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function performs multilevel Otsu thresholding on a 2D array.</span>
 
 <span class="sd">    Otsu thresholding is a technique by which the optimal threshold is chosen so as to split a 2D array based on the</span>
@@ -828,7 +830,7 @@
             <span class="n">sig2t</span> <span class="o">=</span> <span class="p">((</span><span class="n">range_unique_image</span> <span class="o">-</span> <span class="n">mut</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pdf</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
             <span class="k">def</span> <span class="nf">sig_fun</span><span class="p">(</span><span class="n">ik</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-                <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">                A temporary function for passing to the optimizer</span>
 
 <span class="sd">                :param ik:</span>
@@ -883,7 +885,7 @@
 
 
 <div class="viewcode-block" id="pixel_level_peak_finder_2d"><a class="viewcode-back" href="../../image_processing/giant.image_processing.pixel_level_peak_finder_2d.html#giant.image_processing.pixel_level_peak_finder_2d">[docs]</a><span class="k">def</span> <span class="nf">pixel_level_peak_finder_2d</span><span class="p">(</span><span class="n">surface</span><span class="p">:</span> <span class="n">ARRAY_LIKE_2D</span><span class="p">,</span> <span class="n">blur</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function returns a numpy array containing the (x, y) location of the maximum surface value</span>
 <span class="sd">    to pixel level accuracy.</span>
 
@@ -904,7 +906,7 @@
 
 <div class="viewcode-block" id="quadric_peak_finder_2d"><a class="viewcode-back" href="../../image_processing/giant.image_processing.quadric_peak_finder_2d.html#giant.image_processing.quadric_peak_finder_2d">[docs]</a><span class="k">def</span> <span class="nf">quadric_peak_finder_2d</span><span class="p">(</span><span class="n">surface</span><span class="p">:</span> <span class="n">ARRAY_LIKE_2D</span><span class="p">,</span> <span class="n">fit_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">blur</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
                            <span class="n">shift_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function returns a numpy array containing the (x, y) location of the maximum surface value</span>
 <span class="sd">    which corresponds to the peak of the fitted quadric surface to subpixel accuracy.</span>
 
@@ -978,7 +980,7 @@
 
 
 <div class="viewcode-block" id="pixel_level_peak_finder_1d"><a class="viewcode-back" href="../../image_processing/giant.image_processing.pixel_level_peak_finder_1d.html#giant.image_processing.pixel_level_peak_finder_1d">[docs]</a><span class="k">def</span> <span class="nf">pixel_level_peak_finder_1d</span><span class="p">(</span><span class="n">correlation_lines</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function returns a numpy array containing the location of the maximum surface value</span>
 <span class="sd">    to pixel level accuracy for each row of the input matrix.</span>
 
@@ -990,7 +992,7 @@
 
 
 <div class="viewcode-block" id="parabolic_peak_finder_1d"><a class="viewcode-back" href="../../image_processing/giant.image_processing.parabolic_peak_finder_1d.html#giant.image_processing.parabolic_peak_finder_1d">[docs]</a><span class="k">def</span> <span class="nf">parabolic_peak_finder_1d</span><span class="p">(</span><span class="n">correlation_lines</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">fit_size</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the subpixel maximum location along each row.</span>
 
 <span class="sd">    First, this function calls :func:`pixel_level_peak_finder_1d` to identify the location of the peak of each row.</span>
@@ -1042,7 +1044,7 @@
 
 
 <div class="viewcode-block" id="ImageProcessing"><a class="viewcode-back" href="../../image_processing/giant.image_processing.ImageProcessing.html#giant.image_processing.ImageProcessing">[docs]</a><span class="k">class</span> <span class="nc">ImageProcessing</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This class is a collection of various image processing techniques used throughout GIANT.</span>
 
 <span class="sd">    All image processing techniques for the GIANT algorithms are contained in this class.  This includes</span>
@@ -1068,7 +1070,7 @@
                  <span class="n">otsu_levels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">minimum_segment_area</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">minimum_segment_dn</span><span class="p">:</span> <span class="n">Real</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span>
                  <span class="n">image_flattening_noise_approximation</span><span class="p">:</span> <span class="n">ImageFlatteningNoiseApprox</span> <span class="o">=</span> <span class="n">ImageFlatteningNoiseApprox</span><span class="o">.</span><span class="n">GLOBAL</span><span class="p">,</span>
                  <span class="n">flattening_kernel_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :param centroiding: A callable object which takes 3 positional arguments and estimates the centers of a ROI</span>
 <span class="sd">        :param image_denoising: A callable object with takes an image as the first positional argument and returns the</span>
 <span class="sd">                                denoised image</span>
@@ -1100,7 +1102,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">centroiding</span> <span class="o">=</span> <span class="n">centroiding</span>  <span class="c1"># type: PointSpreadFunction</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The PSF object that estimates the center of a region of interest.</span>
 <span class="sd">        </span>
 <span class="sd">        This should be of the form::</span>
@@ -1117,7 +1119,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">save_psf</span> <span class="o">=</span> <span class="n">save_psf</span>  <span class="c1"># type: bool</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A boolean flag specifying whether to save the point spread function fit.</span>
 <span class="sd">        </span>
 <span class="sd">        If this parameter is set to ``true`` then resulting PSF object from the :attr:`centroiding` attribute is saved</span>
@@ -1127,7 +1129,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">image_denoising</span> <span class="o">=</span> <span class="n">image_denoising</span>  <span class="c1"># type: Callable</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A callable that is used to decrease the effects of noise in an image.</span>
 <span class="sd">        </span>
 <span class="sd">        This should take the form of::</span>
@@ -1146,7 +1148,7 @@
             <span class="n">subpixel_method</span> <span class="o">=</span> <span class="n">subpixel_method</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">subpixel_method</span> <span class="o">=</span> <span class="n">SubpixelEdgeMethods</span><span class="p">(</span><span class="n">subpixel_method</span><span class="p">)</span>  <span class="c1"># type: SubpixelEdgeMethods</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        An enumeration (string) specifying what subpixel edge refinement method to use.</span>
 <span class="sd">        </span>
 <span class="sd">        This can specified as an attribute of the :class:`SubpixelEdgeMethods` enumeration directly or as a string</span>
@@ -1154,7 +1156,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">zernike_edge_width</span> <span class="o">=</span> <span class="n">zernike_edge_width</span>  <span class="c1"># type: float</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A tuning parameter for the Zernike Ramp method specifying half the total edge width in pixels.</span>
 <span class="sd">        </span>
 <span class="sd">        Typically this is set to 1.66*sigma where sigma is the point spread function full width half maximum for the </span>
@@ -1162,7 +1164,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">denoising_args</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># type: list</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A list of additional arguments to pass to the :attr:`.image_denoising` callable after the image.</span>
 <span class="sd">        </span>
 <span class="sd">        This list is expanded using the typical python expansion.</span>
@@ -1172,7 +1174,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">denoising_args</span> <span class="o">=</span> <span class="n">denoising_args</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">denoising_kwargs</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># type: dict</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A dictionary of keyword arguments to pass to the :attr:`.image_denoising` callable after the image.</span>
 
 <span class="sd">        This dictionary is expanded using the typical python expansion.</span>
@@ -1181,7 +1183,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">denoising_kwargs</span> <span class="o">=</span> <span class="n">denoising_kwargs</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">denoise_flag</span> <span class="o">=</span> <span class="n">denoise_flag</span>  <span class="c1"># type: bool</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A boolean specifying whether to apply the :attr:`.image_denoising` callable before applying other image </span>
 <span class="sd">        processing routines to an image.</span>
 <span class="sd">        </span>
@@ -1189,7 +1191,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">correlator</span> <span class="o">=</span> <span class="n">correlator</span>  <span class="c1"># type: Callable</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A callable that is used to perform cross correlation between an image and a template</span>
 <span class="sd">        </span>
 <span class="sd">        This should take the image as the first argument, the template as the second argument, and</span>
@@ -1201,7 +1203,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">correlator_kwargs</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># type: dict</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A dictionary of keyword arguments to pass to the :attr:`.correlator` callable after the image and the template.</span>
 
 <span class="sd">        This dictionary is expanded using the typical python expansion.</span>
@@ -1210,20 +1212,20 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">correlator_kwargs</span> <span class="o">=</span> <span class="n">correlator_kwargs</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">pae_threshold</span> <span class="o">=</span> <span class="n">pae_threshold</span>  <span class="c1"># type: float</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This tuning parameter specifies the minimum absolute image gradient for a location in an image to be considered </span>
 <span class="sd">        an edge for the Partial Area Effect Method.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">pae_order</span> <span class="o">=</span> <span class="n">pae_order</span>  <span class="c1"># type: int</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This specifies whether to fit a linear (1) or quadratic (2) to the limb in the PAE method.  </span>
 <span class="sd">        </span>
 <span class="sd">        Typically quadratic produces the best results.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">centroid_size</span> <span class="o">=</span> <span class="n">centroid_size</span>  <span class="c1"># type: int</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This specifies how many pixels to include when identifying a centroid in a region of interest.</span>
 <span class="sd">        </span>
 <span class="sd">        This sets the +/- number from the peak brightness pixel in both axes (so that a value of 1 means</span>
@@ -1231,7 +1233,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">poi_threshold</span> <span class="o">=</span> <span class="n">poi_threshold</span>  <span class="c1"># type: float</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This specifies the sigma multiplier to use when identifying a pixel as a point of interest.</span>
 <span class="sd">        </span>
 <span class="sd">        The sigma multiplier is applied to a rough noise estimate of the image (see </span>
@@ -1240,7 +1242,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">poi_min_size</span> <span class="o">=</span> <span class="n">poi_min_size</span>  <span class="c1"># type: int</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This specifies the minimum number of pixels that must be connected for a blob to be considered a point of </span>
 <span class="sd">        interest.</span>
 
@@ -1249,7 +1251,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">poi_max_size</span> <span class="o">=</span> <span class="n">poi_max_size</span>  <span class="c1"># type: int</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This specifies the maximum number of pixels that must be connected for a blob to be considered a point of </span>
 <span class="sd">        interest.</span>
 
@@ -1258,7 +1260,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">reject_saturation</span> <span class="o">=</span> <span class="n">reject_saturation</span>  <span class="c1"># type: bool</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This boolean flag specifies whether to ignore clumps of pixels that contain saturated DN values when identifying </span>
 <span class="sd">        points of interest in an image.</span>
 <span class="sd">        </span>
@@ -1266,13 +1268,13 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">return_stats</span> <span class="o">=</span> <span class="n">return_stats</span>  <span class="c1"># type: bool</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This boolean flag specifies whether to return statistics about each blob when identifying points of interest in </span>
 <span class="sd">        the image.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">otsu_levels</span> <span class="o">=</span> <span class="n">otsu_levels</span>  <span class="c1"># type int</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This sets the number of levels to attempt to segment the histogram into for Otsu based multi level thresholding.</span>
 <span class="sd">        </span>
 <span class="sd">        See the :func:`.otsu` function for more details.</span>
@@ -1281,7 +1283,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">minimum_segment_area</span> <span class="o">=</span> <span class="n">minimum_segment_area</span>  <span class="c1"># type int</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This sets the minimum area for a segment to be considered not noise.</span>
 <span class="sd">        </span>
 <span class="sd">        Segments with areas less than this are discarded as noise spikes</span>
@@ -1290,7 +1292,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">minimum_segment_dn</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">minimum_segment_dn</span><span class="p">)</span>  <span class="c1"># type float</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The minimum that the average DN for a segment must be for it to not be discarded as the background.</span>
 
 <span class="sd">        Segments with average DNs less than this are discarded as the background</span>
@@ -1304,7 +1306,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">image_flattening_noise_approximation</span><span class="p">:</span> <span class="n">ImageFlatteningNoiseApprox</span> <span class="o">=</span> <span class="n">ImageFlatteningNoiseApprox</span><span class="p">(</span>
             <span class="n">image_flattening_noise_approximation</span>
         <span class="p">)</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This specifies whether to globally flatten the image and compute a single noise level or to locally do so.</span>
 <span class="sd">        </span>
 <span class="sd">        Generally global is sufficient for star identification purposes.  If you are trying to extract very dim stars </span>
@@ -1315,7 +1317,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">flattening_kernel_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">flattening_kernel_size</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This specifies the half size of the kernel to use when locally flattening an image.  </span>
 <span class="sd">        </span>
 <span class="sd">        If you are using global flattening of an image this is ignored.</span>
@@ -1349,7 +1351,7 @@
                 <span class="s2">&quot;(&quot;</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">=</span><span class="si">{!s}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ip_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">segment_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method attempts to segment images into foreground/background objects.</span>
 
 <span class="sd">        The objects are segmented by</span>
@@ -1409,7 +1411,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_global_flat_image_and_noise</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method is used to sample the noise level of an image, as well as return a flattened version of the image.</span>
 
 <span class="sd">        The image is flattened by subtracting off a median filtered copy of the image from the image itself</span>
@@ -1478,7 +1480,7 @@
 
     <span class="c1"># TODO: This would probably be better as a cython function where we can do parallel processing</span>
     <span class="k">def</span> <span class="nf">_local_flat_image_and_noise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">slice</span><span class="p">,</span> <span class="nb">slice</span><span class="p">]]]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method flattens the image and approximates the noise over regions of the image.</span>
 
 <span class="sd">        This is not intended by the user, instead use :meth:`flatten_image_and_get_noise_level`.</span>
@@ -1562,7 +1564,7 @@
 <div class="viewcode-block" id="ImageProcessing.flatten_image_and_get_noise_level"><a class="viewcode-back" href="../../image_processing/giant.image_processing.ImageProcessing.flatten_image_and_get_noise_level.html#giant.image_processing.ImageProcessing.flatten_image_and_get_noise_level">[docs]</a>    <span class="k">def</span> <span class="nf">flatten_image_and_get_noise_level</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
                                                                             <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
                                                                                   <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">slice</span><span class="p">,</span> <span class="nb">slice</span><span class="p">]]]]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method is used to sample the noise level of an image, as well as return a flattened version of the image.</span>
 
 <span class="sd">        There are 2 techniques for flattening the image.</span>
@@ -1599,7 +1601,7 @@
 
 <div class="viewcode-block" id="ImageProcessing.corners_to_roi"><a class="viewcode-back" href="../../image_processing/giant.image_processing.ImageProcessing.corners_to_roi.html#giant.image_processing.ImageProcessing.corners_to_roi">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">corners_to_roi</span><span class="p">(</span><span class="n">row_corners</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">column_corners</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method provides a convenient way to convert a set of corners to a region of interest that can be passed to</span>
 <span class="sd">        :meth:`find_poi_in_roi` and :meth:`locate_subpixel_poi_in_roi`.</span>
 
@@ -1634,7 +1636,7 @@
 <div class="viewcode-block" id="ImageProcessing.find_poi_in_roi"><a class="viewcode-back" href="../../image_processing/giant.image_processing.ImageProcessing.find_poi_in_roi.html#giant.image_processing.ImageProcessing.find_poi_in_roi">[docs]</a>    <span class="k">def</span> <span class="nf">find_poi_in_roi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
                         <span class="n">region</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> \
             <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method identifies pixel level centers for all points of interest inside of some region of interest.</span>
 
 <span class="sd">        A point of interest is defined as any grouping of *n* pixels that are above :attr:`.poi_threshold` *</span>
@@ -1746,7 +1748,7 @@
             <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
                      <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]],</span>
                      <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method is used to estimate the subpixel centers of blobs in an image given the pixel level location of the</span>
 <span class="sd">        blobs.</span>
 
@@ -1851,7 +1853,7 @@
                      <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]],</span>
                      <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]]:</span>
 
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method identifies the subpixel locations of points of interest in an image.</span>
 
 <span class="sd">        This method is simply a convenient way of combining :meth:`find_poi_in_roi` and :meth:`refine_locations` and</span>
@@ -1895,7 +1897,7 @@
             <span class="k">return</span> <span class="n">res</span></div>
 
 <div class="viewcode-block" id="ImageProcessing.denoise_image"><a class="viewcode-back" href="../../image_processing/giant.image_processing.ImageProcessing.denoise_image.html#giant.image_processing.ImageProcessing.denoise_image">[docs]</a>    <span class="k">def</span> <span class="nf">denoise_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method is used to optionally denoise the image before a number of the other techniques contained in this</span>
 <span class="sd">        class.</span>
 
@@ -1909,7 +1911,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_denoising</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">denoising_args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">denoising_kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ImageProcessing.correlate"><a class="viewcode-back" href="../../image_processing/giant.image_processing.ImageProcessing.correlate.html#giant.image_processing.ImageProcessing.correlate">[docs]</a>    <span class="k">def</span> <span class="nf">correlate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">template</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method generates a cross correlation surface between template and image.</span>
 
 <span class="sd">        The method applies the correlation function specified in the :attr:`.correlator` attribute.  The returned</span>
@@ -1938,7 +1940,7 @@
 
     <span class="c1"># TODO: unit tests for all of the following</span>
 <div class="viewcode-block" id="ImageProcessing.identify_subpixel_limbs"><a class="viewcode-back" href="../../image_processing/giant.image_processing.ImageProcessing.identify_subpixel_limbs.html#giant.image_processing.ImageProcessing.identify_subpixel_limbs">[docs]</a>    <span class="k">def</span> <span class="nf">identify_subpixel_limbs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">illum_dir</span><span class="p">:</span> <span class="n">ARRAY_LIKE</span><span class="p">,</span> <span class="n">num_objs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method identifies illuminated limbs in an image to sub-pixel accuracy.</span>
 
 <span class="sd">        The input to this method is the image to have the limbs extracted from, the illumination direction in the image,</span>
@@ -2046,7 +2048,7 @@
                                                                            <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
                                                                      <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
                                                                            <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method determines pixel level edges in an image by thresholding the image gradients.</span>
 
 <span class="sd">        The image gradients are computed by convolving horizontal and vertical Sobel masks with the image to give the</span>
@@ -2167,7 +2169,7 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_split_pos_neg_edges</span><span class="p">(</span><span class="n">horizontal_gradient</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">vertical_gradient</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
                              <span class="n">edges</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method splits diagonal edges into positive/negative bins</span>
 
 <span class="sd">        :param horizontal_gradient: The horizontal gradient array</span>
@@ -2184,7 +2186,7 @@
 
     <span class="k">def</span> <span class="nf">_compute_pae_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sum_a</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">sum_b</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">sum_c</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
                            <span class="n">int_a</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">int_b</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method computes the subpixel location of an edge using the pae method within a pixel.</span>
 
 <span class="sd">        This method is vectorized so multiple edges can be refined at the same time.</span>
@@ -2212,7 +2214,7 @@
         <span class="k">return</span> <span class="n">c_coef</span>
 
 <div class="viewcode-block" id="ImageProcessing.pae_edges"><a class="viewcode-back" href="../../image_processing/giant.image_processing.ImageProcessing.pae_edges.html#giant.image_processing.ImageProcessing.pae_edges">[docs]</a>    <span class="k">def</span> <span class="nf">pae_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method locates edges in an image with subpixel accuracy.</span>
 
 <span class="sd">        Edges are defined as places in the image where the illumination values abruptly transition from light to dark</span>
@@ -2257,7 +2259,7 @@
                          <span class="n">vertical_mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                          <span class="n">horizontal_gradient</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                          <span class="n">vertical_gradient</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method refines pixel level edges to subpixel level using the PAE method.</span>
 
 <span class="sd">        The PAE method is explained at https://www.sciencedirect.com/science/article/pii/S0262885612001850 and is not</span>
@@ -2465,7 +2467,7 @@
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">sp_horiz_edges_pos</span><span class="p">,</span> <span class="n">sp_horiz_edges_neg</span><span class="p">,</span> <span class="n">sp_vert_edges_pos</span><span class="p">,</span> <span class="n">sp_vert_edges_neg</span><span class="p">])</span></div>
 
     <span class="k">def</span> <span class="nf">_locate_limbs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">region</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">centroid</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">illum_dir</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method identifies limb points in a region.</span>
 
 <span class="sd">        This method combines the :meth:`identify_pixel_edges`, :meth:`_pixel_limbs`, and a subpixel method based off</span>
@@ -2502,7 +2504,7 @@
         <span class="k">return</span> <span class="n">limbs</span>
 
 <div class="viewcode-block" id="ImageProcessing.refine_edges_zernike_ramp"><a class="viewcode-back" href="../../image_processing/giant.image_processing.ImageProcessing.refine_edges_zernike_ramp.html#giant.image_processing.ImageProcessing.refine_edges_zernike_ramp">[docs]</a>    <span class="k">def</span> <span class="nf">refine_edges_zernike_ramp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">pixel_edges</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method refines edge locations using the Zernike Ramp method described in</span>
 <span class="sd">        https://arc.aiaa.org/doi/full/10.2514/1.A33692?mobileUi=0.</span>
 
@@ -2577,7 +2579,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_pixel_limbs</span><span class="p">(</span><span class="n">edge_mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">centroid</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">illum_dir</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">step</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method identifies pixel level limb points from a binary image of edge points.</span>
 
 <span class="sd">        A limb is defined as the first edge point encountered by a scan vector in the direction of the illumination</span>
@@ -2666,11 +2668,11 @@
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2021 United States Government.
+      &copy;2023 United States Government.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
 

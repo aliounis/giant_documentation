@@ -4,17 +4,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>SurfaceFeature &#8212; GIANT 1.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
     <script src="../../../../_static/doctools.js"></script>
-    <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <link rel="icon" href="../../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="copyright" title="Copyright" href="../../../../copyright.html" />
@@ -42,6 +41,13 @@
 
 <p class="blurb">A powerful API for Optical Navigation</p>
 
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=nasa&repo=giant&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
 
 
 
@@ -85,7 +91,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="documentwrapper">
@@ -110,7 +116,7 @@
           <div class="body" role="main">
             
   <section id="surfacefeature">
-<h1>SurfaceFeature<a class="headerlink" href="#surfacefeature" title="Permalink to this headline">¶</a></h1>
+<h1>SurfaceFeature<a class="headerlink" href="#surfacefeature" title="Permalink to this heading">¶</a></h1>
 <p><a class="reference internal" href="../giant.relative_opnav.estimators.sfn.surface_features.html#module-giant.relative_opnav.estimators.sfn.surface_features" title="giant.relative_opnav.estimators.sfn.surface_features"><code class="xref py py-mod docutils literal notranslate"><span class="pre">giant.relative_opnav.estimators.sfn.surface_features</span></code></a>:</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.surface_features.SurfaceFeature">
@@ -169,24 +175,24 @@ received them from an untrusted source they could be used to execute arbitrary c
 you should carefully verify that your pickle files have not been tampered with before using them.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>shape</strong> (<em>Union</em><em>[</em><em>pathlib.Path</em><em>, </em><em>str</em><em>, </em><a class="reference internal" href="../../../../ray_tracer/kdtree/giant.ray_tracer.kdtree.KDTree.html#giant.ray_tracer.kdtree.KDTree" title="giant.ray_tracer.kdtree.KDTree"><em>giant.ray_tracer.kdtree.KDTree</em></a><em>, </em><a class="reference internal" href="../../../../ray_tracer/shapes/shape/giant.ray_tracer.shapes.shape.Shape.html#giant.ray_tracer.shapes.shape.Shape" title="giant.ray_tracer.shapes.shape.Shape"><em>giant.ray_tracer.shapes.shape.Shape</em></a><em>]</em>) – The shape object that represents the DEM topography for the feature as a <a class="reference internal" href="../../../../ray_tracer/kdtree/giant.ray_tracer.kdtree.KDTree.html#giant.ray_tracer.kdtree.KDTree" title="giant.ray_tracer.kdtree.KDTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">KDTree</span></code></a> or
+<li><p><strong>shape</strong> (<em>Path</em><em> | </em><em>str</em><em> | </em><a class="reference internal" href="../../../../ray_tracer/kdtree/giant.ray_tracer.kdtree.KDTree.html#giant.ray_tracer.kdtree.KDTree" title="giant.ray_tracer.kdtree.KDTree"><em>KDTree</em></a><em> | </em><a class="reference internal" href="../../../../ray_tracer/shapes/shape/giant.ray_tracer.shapes.shape.Shape.html#giant.ray_tracer.shapes.shape.Shape" title="giant.ray_tracer.shapes.shape.Shape"><em>Shape</em></a>) – The shape object that represents the DEM topography for the feature as a <a class="reference internal" href="../../../../ray_tracer/kdtree/giant.ray_tracer.kdtree.KDTree.html#giant.ray_tracer.kdtree.KDTree" title="giant.ray_tracer.kdtree.KDTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">KDTree</span></code></a> or
 <a class="reference internal" href="../../../../ray_tracer/shapes/shape/giant.ray_tracer.shapes.shape.Shape.html#giant.ray_tracer.shapes.shape.Shape" title="giant.ray_tracer.shapes.shape.Shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shape</span></code></a>, or the path to the file containing the shape object as a <code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">Path</span></code>.</p></li>
-<li><p><strong>normal</strong> (<em>Union</em><em>[</em><em>Sequence</em><em>, </em><em>numpy.ndarray</em><em>]</em>) – The normal vector for the best fit plane to the DEM topography in the body-fixed frame</p></li>
-<li><p><strong>body_fixed_center</strong> (<em>Union</em><em>[</em><em>Sequence</em><em>, </em><em>numpy.ndarray</em><em>]</em>) – The center of the best fit plane to the DEM topography in the body-fixed frame</p></li>
+<li><p><strong>normal</strong> (<em>Sequence</em><em> | </em><em>ndarray</em>) – The normal vector for the best fit plane to the DEM topography in the body-fixed frame</p></li>
+<li><p><strong>body_fixed_center</strong> (<em>Sequence</em><em> | </em><em>ndarray</em>) – The center of the best fit plane to the DEM topography in the body-fixed frame</p></li>
 <li><p><strong>name</strong> (<em>str</em>) – The name of the feature</p></li>
-<li><p><strong>ground_sample_distance</strong> (<em>Optional</em><em>[</em><em>numbers.Real</em><em>]</em>) – The average ground sample distance of the DEM topography in kilometers.</p></li>
+<li><p><strong>ground_sample_distance</strong> (<em>Real</em><em> | </em><em>None</em>) – The average ground sample distance of the DEM topography in kilometers.</p></li>
 <li><p><strong>stale_count_unload_threshold</strong> (<em>int</em>) – The number of times a feature must be marked as <a class="reference internal" href="giant.relative_opnav.estimators.sfn.surface_features.SurfaceFeature.not_found.html#giant.relative_opnav.estimators.sfn.surface_features.SurfaceFeature.not_found" title="giant.relative_opnav.estimators.sfn.surface_features.SurfaceFeature.not_found"><code class="xref py py-meth docutils literal notranslate"><span class="pre">not_found()</span></code></a> for it
 to be unloaded from memory.</p></li>
-<li><p><strong>memory_percent_unload_threshold</strong> (<em>numbers.Real</em>) – The size of the memory footprint of the current process as the percent
+<li><p><strong>memory_percent_unload_threshold</strong> (<em>Real</em>) – The size of the memory footprint of the current process as the percent
 of the total system memory before features are unloaded from memory.</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.surface_features.SurfaceFeature.shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../../../ray_tracer/shapes/shape/giant.ray_tracer.shapes.shape.Shape.html#giant.ray_tracer.shapes.shape.Shape" title="giant.ray_tracer.shapes.shape.Shape"><span class="pre">giant.ray_tracer.shapes.shape.Shape</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../../../ray_tracer/kdtree/giant.ray_tracer.kdtree.KDTree.html#giant.ray_tracer.kdtree.KDTree" title="giant.ray_tracer.kdtree.KDTree"><span class="pre">giant.ray_tracer.kdtree.KDTree</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.surface_features.SurfaceFeature.shape" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../../ray_tracer/shapes/shape/giant.ray_tracer.shapes.shape.Shape.html#giant.ray_tracer.shapes.shape.Shape" title="giant.ray_tracer.shapes.shape.Shape"><span class="pre">Shape</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../../../ray_tracer/kdtree/giant.ray_tracer.kdtree.KDTree.html#giant.ray_tracer.kdtree.KDTree" title="giant.ray_tracer.kdtree.KDTree"><span class="pre">KDTree</span></a></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.surface_features.SurfaceFeature.shape" title="Permalink to this definition">¶</a></dt>
 <dd><p>This property gives the traceable object that represents the DEM.</p>
 <p>This will always return a traceable object (either a <a class="reference internal" href="../../../../ray_tracer/kdtree/giant.ray_tracer.kdtree.KDTree.html#giant.ray_tracer.kdtree.KDTree" title="giant.ray_tracer.kdtree.KDTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">KDTree</span></code></a> or a <a class="reference internal" href="../../../../ray_tracer/shapes/shape/giant.ray_tracer.shapes.shape.Shape.html#giant.ray_tracer.shapes.shape.Shape" title="giant.ray_tracer.shapes.shape.Shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shape</span></code></a>, but if the DEM data
 hasn’t been loaded from disk yet there may be a slight delay while it is retrieved.</p>
@@ -194,7 +200,7 @@ hasn’t been loaded from disk yet there may be a slight delay while it is retri
 
 <dl class="py property">
 <dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.surface_features.SurfaceFeature.bounding_box">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bounding_box</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../../../ray_tracer/shapes/axis_aligned_bounding_box/giant.ray_tracer.shapes.axis_aligned_bounding_box.AxisAlignedBoundingBox.html#giant.ray_tracer.shapes.axis_aligned_bounding_box.AxisAlignedBoundingBox" title="giant.ray_tracer.shapes.axis_aligned_bounding_box.AxisAlignedBoundingBox"><span class="pre">giant.ray_tracer.shapes.axis_aligned_bounding_box.AxisAlignedBoundingBox</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.surface_features.SurfaceFeature.bounding_box" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bounding_box</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../../ray_tracer/shapes/axis_aligned_bounding_box/giant.ray_tracer.shapes.axis_aligned_bounding_box.AxisAlignedBoundingBox.html#giant.ray_tracer.shapes.axis_aligned_bounding_box.AxisAlignedBoundingBox" title="giant.ray_tracer.shapes.axis_aligned_bounding_box.AxisAlignedBoundingBox"><span class="pre">AxisAlignedBoundingBox</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.surface_features.SurfaceFeature.bounding_box" title="Permalink to this definition">¶</a></dt>
 <dd><p>This property returns the bounding box for the feature by retrieving the bounding box from the traceable shape
 object.</p>
 <p>If for some reason the traceable shape object does not have a <code class="docutils literal notranslate"><span class="pre">bounding_box</span></code> attribute, <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</p>
@@ -211,11 +217,7 @@ disk it will be loaded and there may be a slight delay.</p>
 </dd></dl>
 
 <p class="rubric">Summary of Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="giant.relative_opnav.estimators.sfn.surface_features.SurfaceFeature.found.html#giant.relative_opnav.estimators.sfn.surface_features.SurfaceFeature.found" title="giant.relative_opnav.estimators.sfn.surface_features.SurfaceFeature.found"><code class="xref py py-obj docutils literal notranslate"><span class="pre">found</span></code></a></p></td>
 <td><p>This method is called when the feature is found in an image and will be processed.</p></td>
@@ -265,19 +267,19 @@ disk it will be loaded and there may be a slight delay.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2021 United States Government.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="../../../../_sources/relative_opnav/estimators/sfn/surface_features/giant.relative_opnav.estimators.sfn.surface_features.SurfaceFeature.rst.txt"
-          rel="nofollow">Page source</a>
+        &copy;2023 United States Government | 
+        NASA Official: <a href="mailto:andrew.j.liounis@nasa.gov">Andrew Liounis</a> |
+        Curator: <a href="mailto:andrew.j.liounis@nasa.gov">Andrew Liounis</a> 
+        <br>
+            Last updated on Mar 08, 2023 |
+        
+        |
+        Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
+        &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+        
+        |
+        <a href="../../../../_sources/relative_opnav/estimators/sfn/surface_features/giant.relative_opnav.estimators.sfn.surface_features.SurfaceFeature.rst.txt"
+            rel="nofollow">Page source</a>
     </div>
-
-    
-
-    
   </body>
 </html>

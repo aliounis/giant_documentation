@@ -4,17 +4,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>OpNavImage &#8212; GIANT 1.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <link rel="shortcut icon" href="../_static/logo.ico"/>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="icon" href="../_static/logo.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="copyright" title="Copyright" href="../copyright.html" />
@@ -42,6 +41,13 @@
 
 <p class="blurb">A powerful API for Optical Navigation</p>
 
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=nasa&repo=giant&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
 
 
 
@@ -79,7 +85,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="documentwrapper">
@@ -104,7 +110,7 @@
           <div class="body" role="main">
             
   <section id="opnavimage">
-<h1>OpNavImage<a class="headerlink" href="#opnavimage" title="Permalink to this headline">¶</a></h1>
+<h1>OpNavImage<a class="headerlink" href="#opnavimage" title="Permalink to this heading">¶</a></h1>
 <p><a class="reference internal" href="../giant.image.html#module-giant.image" title="giant.image"><code class="xref py py-mod docutils literal notranslate"><span class="pre">giant.image</span></code></a>:</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="giant.image.OpNavImage">
@@ -132,31 +138,31 @@ initialization or can be loaded by overriding the <a class="reference internal" 
 <p>Note that if you have overridden the <a class="reference internal" href="giant.image.OpNavImage.parse_data.html#giant.image.OpNavImage.parse_data" title="giant.image.OpNavImage.parse_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parse_data()</span></code></a> method, specified <code class="docutils literal notranslate"><span class="pre">parse_data=True</span></code>, and specify one 
 of the other optional inputs, what you have specified manually will overwrite anything filled by <a class="reference internal" href="giant.image.OpNavImage.parse_data.html#giant.image.OpNavImage.parse_data" title="giant.image.OpNavImage.parse_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parse_data()</span></code></a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>Union</em><em>[</em><em>pathlib.Path</em><em>, </em><em>str</em><em>, </em><em>Sequence</em><em>[</em><em>Sequence</em><em>]</em><em>, </em><em>numpy.ndarray</em><em>]</em>) – The image data to be formed into an OpNavImage either as a path to an image file or the
+<li><p><strong>data</strong> (<em>Path</em><em> | </em><em>str</em><em> | </em><em>Sequence</em><em>[</em><em>Sequence</em><em>] </em><em>| </em><em>ndarray</em>) – The image data to be formed into an OpNavImage either as a path to an image file or the
 illumination data directly</p></li>
-<li><p><strong>observation_date</strong> (<em>Optional</em><em>[</em><em>datetime.datetime</em><em>]</em>) – The observation_date the image was captured</p></li>
-<li><p><strong>rotation_inertial_to_camera</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><a class="reference internal" href="../rotations/giant.rotations.Rotation.html#giant.rotations.Rotation" title="giant.rotations.Rotation"><em>giant.rotations.Rotation</em></a><em>, </em><em>Sequence</em><em>, </em><em>numpy.ndarray</em><em>]</em><em>]</em>) – the rotation to go from the inertial frame to the camera frame at the time
+<li><p><strong>observation_date</strong> (<em>datetime</em><em> | </em><em>None</em>) – The observation_date the image was captured</p></li>
+<li><p><strong>rotation_inertial_to_camera</strong> (<a class="reference internal" href="../rotations/giant.rotations.Rotation.html#giant.rotations.Rotation" title="giant.rotations.Rotation"><em>Rotation</em></a><em> | </em><em>Sequence</em><em> | </em><em>ndarray</em><em> | </em><em>None</em>) – the rotation to go from the inertial frame to the camera frame at the time
 the image was taken</p></li>
-<li><p><strong>temperature</strong> (<em>Optional</em><em>[</em><em>numbers.Real</em><em>]</em>) – The temperature of the camera when the image was captured</p></li>
-<li><p><strong>position</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><em>Sequence</em><em>, </em><em>numpy.ndarray</em><em>]</em><em>]</em>) – the inertial position of the camera at the time the image was taken</p></li>
-<li><p><strong>velocity</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><em>Sequence</em><em>, </em><em>numpy.ndarray</em><em>]</em><em>]</em>) – The inertial velocity of the camera at the time the image was taken</p></li>
-<li><p><strong>exposure_type</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><a class="reference internal" href="giant.image.ExposureType.html#giant.image.ExposureType" title="giant.image.ExposureType"><em>giant.image.ExposureType</em></a><em>, </em><em>str</em><em>]</em><em>]</em>) – The type of exposure for the image (‘short’ or ‘long’)</p></li>
-<li><p><strong>saturation</strong> (<em>Optional</em><em>[</em><em>numbers.Real</em><em>]</em>) – The saturation level for the image</p></li>
-<li><p><strong>file</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><em>pathlib.Path</em><em>, </em><em>str</em><em>]</em><em>]</em>) – The file the illumination data came from.  Generally required if parse_data is to be used and the
+<li><p><strong>temperature</strong> (<em>Real</em><em> | </em><em>None</em>) – The temperature of the camera when the image was captured</p></li>
+<li><p><strong>position</strong> (<em>Sequence</em><em> | </em><em>ndarray</em><em> | </em><em>None</em>) – the inertial position of the camera at the time the image was taken</p></li>
+<li><p><strong>velocity</strong> (<em>Sequence</em><em> | </em><em>ndarray</em><em> | </em><em>None</em>) – The inertial velocity of the camera at the time the image was taken</p></li>
+<li><p><strong>exposure_type</strong> (<a class="reference internal" href="giant.image.ExposureType.html#giant.image.ExposureType" title="giant.image.ExposureType"><em>ExposureType</em></a><em> | </em><em>str</em><em> | </em><em>None</em>) – The type of exposure for the image (‘short’ or ‘long’)</p></li>
+<li><p><strong>saturation</strong> (<em>Real</em><em> | </em><em>None</em>) – The saturation level for the image</p></li>
+<li><p><strong>file</strong> (<em>Path</em><em> | </em><em>str</em><em> | </em><em>None</em>) – The file the illumination data came from.  Generally required if parse_data is to be used and the
 data was entered as an array like value</p></li>
 <li><p><strong>parse_data</strong> (<em>bool</em>) – A flag whether to try the parse_data method.  The parse_data method must be defined by the
 user.</p></li>
-<li><p><strong>exposure</strong> (<em>Optional</em><em>[</em><em>numbers.Real</em><em>]</em>) – The exposure time used to capture the image.  This isn’t actually used in GIANT (in favor of
+<li><p><strong>exposure</strong> (<em>Real</em><em> | </em><em>None</em>) – The exposure time used to capture the image.  This isn’t actually used in GIANT (in favor of
 <a class="reference internal" href="#giant.image.OpNavImage.exposure_type" title="giant.image.OpNavImage.exposure_type"><code class="xref py py-attr docutils literal notranslate"><span class="pre">exposure_type</span></code></a> attribute) so it is provided for convenience and for manual inspection</p></li>
-<li><p><strong>dark_pixels</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><em>Sequence</em><em>, </em><em>numpy.ndarray</em><em>]</em><em>]</em>) – An array of dark pixels to be used in estimating the noise level of the image (this
+<li><p><strong>dark_pixels</strong> (<em>Sequence</em><em> | </em><em>ndarray</em><em> | </em><em>None</em>) – An array of dark pixels to be used in estimating the noise level of the image (this
 generally refers to a set of pixels that are active but specifically not exposed to light</p></li>
 <li><p><strong>instrument</strong> (<em>str</em>) – The camera used to capture the image.  This is not used internally by GIANT and is provided
 for convenience and for manual inspection</p></li>
 <li><p><strong>spacecraft</strong> (<em>str</em>) – The spacecraft hosting the camera. This is not used internally by GIANT and is provided
 for convenience and for manual inspection</p></li>
-<li><p><strong>target</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – The target that the camera is pointed towards. This is not used internally by GIANT and is
+<li><p><strong>target</strong> (<em>str</em><em> | </em><em>None</em>) – The target that the camera is pointed towards. This is not used internally by GIANT and is
 provided for convenience and for manual inspection</p></li>
 <li><p><strong>pointing_post_fit</strong> (<em>bool</em>) – A flag specifying whether the attitude for this image has been estimated (True) or not</p></li>
 </ul>
@@ -164,7 +170,7 @@ provided for convenience and for manual inspection</p></li>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="giant.image.OpNavImage.exposure">
-<span class="sig-name descname"><span class="pre">exposure</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Real</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#giant.image.OpNavImage.exposure" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">exposure</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Real</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#giant.image.OpNavImage.exposure" title="Permalink to this definition">¶</a></dt>
 <dd><p>The exposure length of the image (usually in seconds).</p>
 <p>This attribute is provided for documentation and convenience, but typically isn’t used directly by core GIANT
 functions.  Instead, the <a class="reference internal" href="#giant.image.OpNavImage.exposure_type" title="giant.image.OpNavImage.exposure_type"><code class="xref py py-attr docutils literal notranslate"><span class="pre">exposure_type</span></code></a> attribute is used.  For an example of how one might use this
@@ -173,7 +179,7 @@ attribute, see the <a class="reference internal" href="../getting_started.html#g
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="giant.image.OpNavImage.dark_pixels">
-<span class="sig-name descname"><span class="pre">dark_pixels</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#giant.image.OpNavImage.dark_pixels" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">dark_pixels</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#giant.image.OpNavImage.dark_pixels" title="Permalink to this definition">¶</a></dt>
 <dd><p>A numpy array of “dark” (active but covered) pixels from a detector.</p>
 <p>This array (if set) is used in the <a class="reference internal" href="../image_processing/giant.image_processing.ImageProcessing.find_poi_in_roi.html#giant.image_processing.ImageProcessing.find_poi_in_roi" title="giant.image_processing.ImageProcessing.find_poi_in_roi"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_poi_in_roi()</span></code></a> method to determine a rough noise level in the
 entire image.  It typically is set to a region of the detector which contains active pixels but is covered and
@@ -185,7 +191,7 @@ class (though this is not technically necessary).</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="giant.image.OpNavImage.instrument">
-<span class="sig-name descname"><span class="pre">instrument</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#giant.image.OpNavImage.instrument" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">instrument</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#giant.image.OpNavImage.instrument" title="Permalink to this definition">¶</a></dt>
 <dd><p>A string specifying the instrument that this image comes from.</p>
 <p>This attribute is provided for documentation and convenience, but isn’t used directly by core GIANT
 functions.  For an example of how one might use this attribute, see the <a class="reference internal" href="../getting_started.html#getting-started"><span class="std std-ref">getting started</span></a>
@@ -194,7 +200,7 @@ page for more details.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="giant.image.OpNavImage.spacecraft">
-<span class="sig-name descname"><span class="pre">spacecraft</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#giant.image.OpNavImage.spacecraft" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">spacecraft</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#giant.image.OpNavImage.spacecraft" title="Permalink to this definition">¶</a></dt>
 <dd><p>A string specifying the spacecraft hosting the instrument that this image comes from.</p>
 <p>This attribute is provided for documentation and convenience, but isn’t used directly by core GIANT
 functions.  For an example of how one might use this attribute, see the <a class="reference internal" href="../getting_started.html#getting-started"><span class="std std-ref">getting started</span></a>
@@ -203,7 +209,7 @@ page for more details.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="giant.image.OpNavImage.target">
-<span class="sig-name descname"><span class="pre">target</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#giant.image.OpNavImage.target" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">target</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#giant.image.OpNavImage.target" title="Permalink to this definition">¶</a></dt>
 <dd><p>A string specifying the target observed by the instrument in this image.</p>
 <p>This attribute is provided for documentation and convenience, but isn’t used directly by core GIANT
 functions.  For an example of how one might use this attribute, see the <a class="reference internal" href="../getting_started.html#getting-started"><span class="std std-ref">getting started</span></a>
@@ -222,7 +228,7 @@ in the <a class="reference internal" href="../camera/giant.camera.Camera.update_
 
 <dl class="py property">
 <dt class="sig sig-object py" id="giant.image.OpNavImage.observation_date">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">observation_date</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime.datetime</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#giant.image.OpNavImage.observation_date" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">observation_date</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#giant.image.OpNavImage.observation_date" title="Permalink to this definition">¶</a></dt>
 <dd><p>The observation_date specifies when the image was captured (normally set to the middle of the exposure period).</p>
 <p>This is used for tagging observations with timestamps, updating attitude knowledge in short exposure images
 using long exposure images, and updating a scene to how it is expected to be at the time an image is captured.</p>
@@ -235,7 +241,7 @@ again this is likely to break other functionality in GIANT so it is not recommen
 
 <dl class="py property">
 <dt class="sig sig-object py" id="giant.image.OpNavImage.rotation_inertial_to_camera">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rotation_inertial_to_camera</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../rotations/giant.rotations.Rotation.html#giant.rotations.Rotation" title="giant.rotations.Rotation"><span class="pre">giant.rotations.Rotation</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#giant.image.OpNavImage.rotation_inertial_to_camera" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rotation_inertial_to_camera</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../rotations/giant.rotations.Rotation.html#giant.rotations.Rotation" title="giant.rotations.Rotation"><span class="pre">Rotation</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#giant.image.OpNavImage.rotation_inertial_to_camera" title="Permalink to this definition">¶</a></dt>
 <dd><p>The rotation_inertial_to_camera attribute encodes the rotation to transform from the inertial frame to the
 camera frame at the time of the image.</p>
 <p>This is used extensively throughout GIANT.  It is updated when using stars to estimate an updated attitude, when
@@ -251,7 +257,7 @@ GIANT so it is not recommended.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="giant.image.OpNavImage.velocity">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">velocity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#giant.image.OpNavImage.velocity" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">velocity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#giant.image.OpNavImage.velocity" title="Permalink to this definition">¶</a></dt>
 <dd><p>The velocity attribute encodes the inertial velocity of the camera at the time the image was captured.</p>
 <p>This must be the inertial velocity with respect to the solar system barycenter and is used when
 to compute the stellar aberration correction to stars and targets.  To ignore stellar aberration you can set
@@ -262,7 +268,7 @@ ndarray.  If you try to set this value to None then it will be reset to a vector
 
 <dl class="py property">
 <dt class="sig sig-object py" id="giant.image.OpNavImage.position">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">position</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#giant.image.OpNavImage.position" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">position</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#giant.image.OpNavImage.position" title="Permalink to this definition">¶</a></dt>
 <dd><p>The position attribute encodes the inertial position of the camera at the time the image was captured.</p>
 <p>Typically this is the inertial position from the solar system barycenter to the spacecraft and is used when
 updating an <a class="reference internal" href="../ray_tracer/scene/giant.ray_tracer.scene.Scene.html#giant.ray_tracer.scene.Scene" title="giant.ray_tracer.scene.Scene"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scene</span></code></a> to place objects in the camera frame at the time of the image.  You can
@@ -274,7 +280,7 @@ ndarray.  If you try to set this value to None then it will be reset to a vector
 
 <dl class="py property">
 <dt class="sig sig-object py" id="giant.image.OpNavImage.exposure_type">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exposure_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="giant.image.ExposureType.html#giant.image.ExposureType" title="giant.image.ExposureType"><span class="pre">giant.image.ExposureType</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#giant.image.OpNavImage.exposure_type" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exposure_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="giant.image.ExposureType.html#giant.image.ExposureType" title="giant.image.ExposureType"><span class="pre">ExposureType</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#giant.image.OpNavImage.exposure_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>The exposure type specifies what type of processing to use on this image.</p>
 <p><code class="docutils literal notranslate"><span class="pre">short</span></code> exposure images are used for relative navigation like center finding.
 <code class="docutils literal notranslate"><span class="pre">long</span></code> exposure images are used for star based navigation like attitude estimation.
@@ -285,7 +291,7 @@ can break some other functionality of GIANT so it is not recommended.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="giant.image.OpNavImage.temperature">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">temperature</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numbers.Real</span></em><a class="headerlink" href="#giant.image.OpNavImage.temperature" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">temperature</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Real</span></em><a class="headerlink" href="#giant.image.OpNavImage.temperature" title="Permalink to this definition">¶</a></dt>
 <dd><p>The temperature of the camera at the time the image was captured</p>
 <p>This property is used by the camera model to apply temperature dependent focal length changes.  It should be
 a <code class="docutils literal notranslate"><span class="pre">Real</span></code> and convertible to a float by using the <code class="docutils literal notranslate"><span class="pre">float</span></code> function.  You can set this value to None but it
@@ -294,7 +300,7 @@ will break things in the camera model so that is not recommended.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="giant.image.OpNavImage.saturation">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">saturation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numbers.Real</span></em><a class="headerlink" href="#giant.image.OpNavImage.saturation" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">saturation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Real</span></em><a class="headerlink" href="#giant.image.OpNavImage.saturation" title="Permalink to this definition">¶</a></dt>
 <dd><p>The saturation value of the camera.</p>
 <p>This attribute is used when determining if a pixel is saturated or not in image processing.  It may be set to a
 very high number to effectively ignore the check.</p>
@@ -303,11 +309,7 @@ very high number to effectively ignore the check.</p>
 </dd></dl>
 
 <p class="rubric">Summary of Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="giant.image.OpNavImage.load_image.html#giant.image.OpNavImage.load_image" title="giant.image.OpNavImage.load_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_image</span></code></a></p></td>
 <td><p>This method reads in a number of standard image formats using OpenCV and pyfits and converts it to grayscale if it is in color.</p></td>
@@ -345,19 +347,19 @@ very high number to effectively ignore the check.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2021 United States Government.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="../_sources/image/giant.image.OpNavImage.rst.txt"
-          rel="nofollow">Page source</a>
+        &copy;2023 United States Government | 
+        NASA Official: <a href="mailto:andrew.j.liounis@nasa.gov">Andrew Liounis</a> |
+        Curator: <a href="mailto:andrew.j.liounis@nasa.gov">Andrew Liounis</a> 
+        <br>
+            Last updated on Mar 08, 2023 |
+        
+        |
+        Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
+        &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+        
+        |
+        <a href="../_sources/image/giant.image.OpNavImage.rst.txt"
+            rel="nofollow">Page source</a>
     </div>
-
-    
-
-    
   </body>
 </html>

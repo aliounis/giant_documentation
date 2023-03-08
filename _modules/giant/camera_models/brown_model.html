@@ -12,7 +12,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../../../_static/logo.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -72,7 +74,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="documentwrapper">
@@ -394,7 +396,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">estimation_parameters</span> <span class="o">=</span> <span class="n">estimation_parameters</span>
 
         <span class="c1"># add the distortion parameters to the important variables</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">important_attributes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">important_attributes</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;k1&#39;</span><span class="p">,</span> <span class="s1">&#39;k2&#39;</span><span class="p">,</span> <span class="s1">&#39;k3&#39;</span><span class="p">,</span> <span class="s1">&#39;p1&#39;</span><span class="p">,</span> <span class="s1">&#39;p2&#39;</span><span class="p">,</span> <span class="s1">&#39;alpha&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">important_attributes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">important_attributes</span> <span class="o">+</span> \
+            <span class="p">[</span><span class="s1">&#39;k1&#39;</span><span class="p">,</span> <span class="s1">&#39;k2&#39;</span><span class="p">,</span> <span class="s1">&#39;k3&#39;</span><span class="p">,</span> <span class="s1">&#39;p1&#39;</span><span class="p">,</span> <span class="s1">&#39;p2&#39;</span><span class="p">,</span> <span class="s1">&#39;alpha&#39;</span><span class="p">]</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A list specifying the important attributes the must be saved/loaded for this camera model to be completely </span>
 <span class="sd">        reconstructed. </span>
@@ -651,7 +654,8 @@
 
         <span class="k">if</span> <span class="n">val</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
 
-            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;The focal length is constrained to be length 1 and is read only for this model&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+                <span class="s1">&#39;The focal length is constrained to be length 1 and is read only for this model&#39;</span><span class="p">)</span>
 
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_focal_length</span> <span class="o">=</span> <span class="mi">1</span>
@@ -734,7 +738,8 @@
         <span class="n">rows_cols</span> <span class="o">=</span> <span class="n">rows</span> <span class="o">*</span> <span class="n">cols</span>
 
         <span class="c1"># compute the radial distortion</span>
-        <span class="n">radial_distortion</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k1</span> <span class="o">*</span> <span class="n">radius2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">k2</span> <span class="o">*</span> <span class="n">radius4</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">k3</span> <span class="o">*</span> <span class="n">radius6</span><span class="p">)</span> <span class="o">*</span> <span class="n">pinhole_locations</span>
+        <span class="n">radial_distortion</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k1</span> <span class="o">*</span> <span class="n">radius2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">k2</span> <span class="o">*</span>
+                             <span class="n">radius4</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">k3</span> <span class="o">*</span> <span class="n">radius6</span><span class="p">)</span> <span class="o">*</span> <span class="n">pinhole_locations</span>
 
         <span class="c1"># compute the tip/tilt/decentering distortion</span>
         <span class="n">decentering_distortion</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">p1</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">rows_cols</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">p2</span> <span class="o">*</span> <span class="p">(</span><span class="n">radius2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">cols</span> <span class="o">*</span> <span class="n">cols</span><span class="p">),</span>
@@ -797,25 +802,29 @@
 
         <span class="c1"># apply misalignment to the points</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimate_multiple_misalignments</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">[</span><span class="n">image</span><span class="p">]):</span>  <span class="c1"># optimization to avoid matrix multiplication</span>
+            <span class="c1"># optimization to avoid matrix multiplication</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">[</span><span class="n">image</span><span class="p">]):</span>
                 <span class="n">points_in_camera_frame</span> <span class="o">=</span> <span class="n">rotvec_to_rotmat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">[</span><span class="n">image</span><span class="p">])</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span> <span class="o">@</span> \
-                                         <span class="n">points_in_camera_frame</span>
+                    <span class="n">points_in_camera_frame</span>
 
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">):</span>  <span class="c1"># optimization to avoid matrix multiplication</span>
-                <span class="n">points_in_camera_frame</span> <span class="o">=</span> <span class="n">rotvec_to_rotmat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span> <span class="o">@</span> <span class="n">points_in_camera_frame</span>
+                <span class="n">points_in_camera_frame</span> <span class="o">=</span> <span class="n">rotvec_to_rotmat</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span> <span class="o">@</span> <span class="n">points_in_camera_frame</span>
 
         <span class="c1"># get the unitless image plane location</span>
-        <span class="n">pinhole_locations</span> <span class="o">=</span> <span class="n">points_in_camera_frame</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">points_in_camera_frame</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">pinhole_locations</span> <span class="o">=</span> <span class="n">points_in_camera_frame</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> \
+            <span class="n">points_in_camera_frame</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 
         <span class="c1"># get the distorted image plane location</span>
-        <span class="n">image_locations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_distortion</span><span class="p">(</span><span class="n">pinhole_locations</span><span class="p">)</span>
+        <span class="n">image_locations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_distortion</span><span class="p">(</span><span class="n">pinhole_locations</span><span class="p">)</span> 
 
         <span class="c1"># add the temperature based scaling</span>
         <span class="n">image_locations</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_temperature_scale</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
 
         <span class="c1"># get the pixel locations of the points, need to mess with transposes due to numpy broadcasting rules</span>
-        <span class="n">picture_locations</span> <span class="o">=</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">intrinsic_matrix</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">@</span> <span class="n">image_locations</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">intrinsic_matrix</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">picture_locations</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">intrinsic_matrix</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">@</span> <span class="n">image_locations</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">intrinsic_matrix</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
 
         <span class="k">return</span> <span class="n">pinhole_locations</span><span class="p">,</span> <span class="n">image_locations</span><span class="p">,</span> <span class="n">picture_locations</span></div>
 
@@ -855,7 +864,8 @@
 <span class="sd">        :return: A shape (2,) or shape (2, n) numpy array of image points (with units of pixels)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="n">_</span><span class="p">,</span> <span class="n">__</span><span class="p">,</span> <span class="n">picture_locations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_projections</span><span class="p">(</span><span class="n">points_in_camera_frame</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">__</span><span class="p">,</span> <span class="n">picture_locations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_projections</span><span class="p">(</span>
+            <span class="n">points_in_camera_frame</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">picture_locations</span></div>
 
@@ -897,7 +907,8 @@
 
             <span class="c1"># get the camera point after misalignment and shift from principle frame is applied</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimate_multiple_misalignments</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">[</span><span class="n">image</span><span class="p">]):</span>  <span class="c1"># optimization to avoid matrix multiplication</span>
+                <span class="c1"># optimization to avoid matrix multiplication</span>
+                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">[</span><span class="n">image</span><span class="p">]):</span>
                     <span class="n">mis</span> <span class="o">=</span> <span class="n">rotvec_to_rotmat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">[</span><span class="n">image</span><span class="p">])</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
                     <span class="n">cam_point</span> <span class="o">=</span> <span class="n">mis</span> <span class="o">@</span> <span class="n">vector</span>
 
@@ -928,7 +939,8 @@
                                                                              <span class="n">radius2</span><span class="p">,</span> <span class="n">radius4</span><span class="p">,</span> <span class="n">radius6</span><span class="p">)</span>
 
             <span class="c1"># get the partial derivative of the pixel location of the point with respect to the dist gnomic location</span>
-            <span class="n">dpix_ddist_gnom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_dpixel_ddistorted_gnomic</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">)</span>
+            <span class="n">dpix_ddist_gnom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_dpixel_ddistorted_gnomic</span><span class="p">(</span>
+                <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">)</span>
 
             <span class="c1"># compute the partial derivative of the misaligned vector with respect to a change in the input vector</span>
             <span class="n">dcam_point_dvector</span> <span class="o">=</span> <span class="n">mis</span>
@@ -1098,8 +1110,10 @@
         <span class="n">ddist_gnom_dr6</span> <span class="o">=</span> <span class="n">radius6</span> <span class="o">*</span> <span class="n">gnomic_loc</span>
 
         <span class="c1"># compute the partial derivative of the tip/tilt/prism terms</span>
-        <span class="n">ddist_gnom_dp1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">gnomic_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">gnomic_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">radius2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">gnomic_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">]</span>
-        <span class="n">ddist_gnom_dp2</span> <span class="o">=</span> <span class="p">[</span><span class="n">radius2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">gnomic_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">gnomic_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">gnomic_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">ddist_gnom_dp1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">gnomic_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span>
+                          <span class="n">gnomic_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">radius2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">gnomic_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="n">ddist_gnom_dp2</span> <span class="o">=</span> <span class="p">[</span><span class="n">radius2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">gnomic_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                          <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">gnomic_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">gnomic_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
 
         <span class="c1"># compute the partial derivative of the distorted gnomic location with respect to the distortion coefficients</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ddist_gnom_dr2</span><span class="p">,</span> <span class="n">ddist_gnom_dr4</span><span class="p">,</span> <span class="n">ddist_gnom_dr6</span><span class="p">,</span> <span class="n">ddist_gnom_dp1</span><span class="p">,</span> <span class="n">ddist_gnom_dp2</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
@@ -1158,15 +1172,18 @@
 
         <span class="c1"># get the camera point after misalignment and shift from principle frame is applied</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimate_multiple_misalignments</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">[</span><span class="n">image</span><span class="p">]):</span>  <span class="c1"># optimization to avoid matrix multiplication</span>
-                <span class="n">cam_point</span> <span class="o">=</span> <span class="n">rotvec_to_rotmat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">[</span><span class="n">image</span><span class="p">])</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span> <span class="o">@</span> <span class="n">unit_vector_camera</span>
+            <span class="c1"># optimization to avoid matrix multiplication</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">[</span><span class="n">image</span><span class="p">]):</span>
+                <span class="n">cam_point</span> <span class="o">=</span> <span class="n">rotvec_to_rotmat</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">[</span><span class="n">image</span><span class="p">])</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span> <span class="o">@</span> <span class="n">unit_vector_camera</span>
 
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">cam_point</span> <span class="o">=</span> <span class="n">unit_vector_camera</span>
 
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">):</span>  <span class="c1"># optimization to avoid matrix multiplication</span>
-                <span class="n">cam_point</span> <span class="o">=</span> <span class="n">rotvec_to_rotmat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span> <span class="o">@</span> <span class="n">unit_vector_camera</span>
+                <span class="n">cam_point</span> <span class="o">=</span> <span class="n">rotvec_to_rotmat</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span> <span class="o">@</span> <span class="n">unit_vector_camera</span>
 
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">cam_point</span> <span class="o">=</span> <span class="n">unit_vector_camera</span>
@@ -1184,13 +1201,16 @@
         <span class="c1"># --------------------------------------------------------------------------------------------------------------</span>
 
         <span class="c1"># get the partial derivative of the distorted gnomic location with respect to the gnomic location</span>
-        <span class="n">ddist_gnom_dgnom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_ddistorted_gnomic_dgnomic</span><span class="p">(</span><span class="n">image_loc</span><span class="p">,</span> <span class="n">radius2</span><span class="p">,</span> <span class="n">radius4</span><span class="p">,</span> <span class="n">radius6</span><span class="p">)</span>
+        <span class="n">ddist_gnom_dgnom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_ddistorted_gnomic_dgnomic</span><span class="p">(</span>
+            <span class="n">image_loc</span><span class="p">,</span> <span class="n">radius2</span><span class="p">,</span> <span class="n">radius4</span><span class="p">,</span> <span class="n">radius6</span><span class="p">)</span>
 
         <span class="c1"># get the partial derivative of the pixel location of the point with respect to the distorted location</span>
-        <span class="n">dpix_ddist_gnom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_dpixel_ddistorted_gnomic</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">)</span>
+        <span class="n">dpix_ddist_gnom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_dpixel_ddistorted_gnomic</span><span class="p">(</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">)</span>
 
         <span class="c1"># get the partial derivative of the camera location with respect to a change in the misalignment vector</span>
-        <span class="n">dcam_point_dmisalignment</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_dcamera_point_dmisalignment</span><span class="p">(</span><span class="n">unit_vector_camera</span><span class="p">)</span>
+        <span class="n">dcam_point_dmisalignment</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_dcamera_point_dmisalignment</span><span class="p">(</span>
+            <span class="n">unit_vector_camera</span><span class="p">)</span>
 
         <span class="c1"># get the partial derivative of the gnomic location with respect to the point in the camera frame</span>
         <span class="n">dgnom_dcam_point</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_dgnomic_dcamera_point</span><span class="p">(</span><span class="n">cam_point</span><span class="p">)</span>
@@ -1209,7 +1229,8 @@
         <span class="c1"># --------------------------------------------------------------------------------------------------------------</span>
 
         <span class="c1"># compute the partial derivative of the distorted gnomic location with respect to the distortion coefficients</span>
-        <span class="n">dist_gnom_ddist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_ddistorted_gnomic_ddistortion</span><span class="p">(</span><span class="n">image_loc</span><span class="p">,</span> <span class="n">radius2</span><span class="p">,</span> <span class="n">radius4</span><span class="p">,</span> <span class="n">radius6</span><span class="p">)</span>
+        <span class="n">dist_gnom_ddist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_ddistorted_gnomic_ddistortion</span><span class="p">(</span>
+            <span class="n">image_loc</span><span class="p">,</span> <span class="n">radius2</span><span class="p">,</span> <span class="n">radius4</span><span class="p">,</span> <span class="n">radius6</span><span class="p">)</span>
 
         <span class="c1"># compute the partial derivative of the pixel location with respect to the distortion coefficients</span>
         <span class="n">dpix_ddist</span> <span class="o">=</span> <span class="n">dpix_ddist_gnom</span> <span class="o">@</span> <span class="n">dist_gnom_ddist</span>
@@ -1218,16 +1239,19 @@
         <span class="c1"># get the partial derivative of the measurement with respect to the temperature coefficients</span>
         <span class="c1"># --------------------------------------------------------------------------------------------------------------</span>
 
-        <span class="n">dpix_dtemperature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_dpixel_dtemperature_coeffs</span><span class="p">(</span><span class="n">image_loc_dist</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">)</span>
+        <span class="n">dpix_dtemperature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_dpixel_dtemperature_coeffs</span><span class="p">(</span>
+            <span class="n">image_loc_dist</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">)</span>
 
         <span class="c1"># stack everything together</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimate_multiple_misalignments</span><span class="p">:</span>
             <span class="n">jacobian_row</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">dpix_dintrinsic</span><span class="p">,</span> <span class="n">dpix_ddist</span><span class="p">,</span> <span class="n">dpix_dtemperature</span><span class="p">,</span>
-                                      <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">image</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)),</span> <span class="n">dpix_dmisalignment</span><span class="p">,</span>
+                                      <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">image</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+                                               <span class="p">),</span> <span class="n">dpix_dmisalignment</span><span class="p">,</span>
                                       <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">num_images</span> <span class="o">-</span> <span class="n">image</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">))])</span>
 
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">jacobian_row</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">dpix_dintrinsic</span><span class="p">,</span> <span class="n">dpix_ddist</span><span class="p">,</span> <span class="n">dpix_dtemperature</span><span class="p">,</span> <span class="n">dpix_dmisalignment</span><span class="p">])</span>
+            <span class="n">jacobian_row</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">dpix_dintrinsic</span><span class="p">,</span> <span class="n">dpix_ddist</span><span class="p">,</span> <span class="n">dpix_dtemperature</span><span class="p">,</span> <span class="n">dpix_dmisalignment</span><span class="p">])</span>
 
         <span class="k">return</span> <span class="n">jacobian_row</span>
 
@@ -1300,7 +1324,8 @@
 
             <span class="k">elif</span> <span class="n">parameter</span> <span class="o">==</span> <span class="mi">13</span> <span class="ow">or</span> <span class="n">parameter</span> <span class="o">==</span> <span class="s1">&#39;13:&#39;</span><span class="p">:</span>
 
-                <span class="n">misalignment_updates</span> <span class="o">=</span> <span class="n">update_vec</span><span class="p">[</span><span class="n">ind</span><span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+                <span class="n">misalignment_updates</span> <span class="o">=</span> <span class="n">update_vec</span><span class="p">[</span><span class="n">ind</span><span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+                    <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
 
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimate_multiple_misalignments</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span> <span class="o">=</span> <span class="p">[(</span><span class="n">Rotation</span><span class="p">(</span><span class="n">update</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rotation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">[</span><span class="n">ind</span><span class="p">]))</span><span class="o">.</span><span class="n">vector</span>
@@ -1308,7 +1333,8 @@
 
                 <span class="k">else</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span> <span class="o">=</span> <span class="p">(</span>
-                            <span class="n">Rotation</span><span class="p">(</span><span class="n">misalignment_updates</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rotation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">)</span>
+                        <span class="n">Rotation</span><span class="p">(</span><span class="n">misalignment_updates</span><span class="p">)</span> <span class="o">*</span>
+                        <span class="n">Rotation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">misalignment</span><span class="p">)</span>
                     <span class="p">)</span><span class="o">.</span><span class="n">vector</span>
 
                 <span class="k">break</span></div></div>
@@ -1328,10 +1354,10 @@
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2021 United States Government.
+      &copy;2023 United States Government.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
     </div>

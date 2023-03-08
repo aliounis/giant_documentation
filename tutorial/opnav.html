@@ -4,17 +4,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Performing Optical Navigation &#8212; GIANT 1.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <link rel="shortcut icon" href="../_static/logo.ico"/>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="icon" href="../_static/logo.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="copyright" title="Copyright" href="../copyright.html" />
@@ -42,6 +41,13 @@
 
 <p class="blurb">A powerful API for Optical Navigation</p>
 
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=nasa&repo=giant&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
 
 
 
@@ -77,7 +83,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="documentwrapper">
@@ -102,7 +108,7 @@
           <div class="body" role="main">
             
   <section id="performing-optical-navigation">
-<h1>Performing Optical Navigation<a class="headerlink" href="#performing-optical-navigation" title="Permalink to this headline">¶</a></h1>
+<h1>Performing Optical Navigation<a class="headerlink" href="#performing-optical-navigation" title="Permalink to this heading">¶</a></h1>
 <p>With our camera calibration complete, we can now use GIANT to do some relative navigation!  For this, we will process
 OpNav images taken during Dawn’s approach to the asteroid Vesta.  These images were taken in sets of 40 for each OpNav
 window, alternating between long and short exposure lengths.  The long exposure images are used to refine the attitude
@@ -111,7 +117,7 @@ relative navigation with respect to Vesta.</p>
 <p>To begin doing OpNav, create a script called <code class="docutils literal notranslate"><span class="pre">opnav.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">scripts</span></code> directory and open it with your favorite
 text editor.</p>
 <section id="initial-imports">
-<h2>Initial Imports<a class="headerlink" href="#initial-imports" title="Permalink to this headline">¶</a></h2>
+<h2>Initial Imports<a class="headerlink" href="#initial-imports" title="Permalink to this heading">¶</a></h2>
 <p>As with the previous two scripts, we need to start off with importing the modules and packages we will need.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># a utility for retrieving a list of files using glob patterns</span>
 <span class="kn">import</span> <span class="nn">glob</span>
@@ -165,7 +171,7 @@ text editor.</p>
 </div>
 </section>
 <section id="loading-the-data">
-<h2>Loading the Data<a class="headerlink" href="#loading-the-data" title="Permalink to this headline">¶</a></h2>
+<h2>Loading the Data<a class="headerlink" href="#loading-the-data" title="Permalink to this heading">¶</a></h2>
 <p>With the imports out of the way, we now need to load our meta kernel, our images, and our camera model that we solved
 for in the calibration script and define the function that represents the point spread function for our camera.
 The loading is  done using basic utilities from external libraries plus the <a class="reference internal" href="../camera_model/giant.camera_models.camera_model.load.html#giant.camera_models.camera_model.load" title="giant.camera_models.camera_model.load"><code class="xref py py-func docutils literal notranslate"><span class="pre">load()</span></code></a>
@@ -192,7 +198,7 @@ campaign.  For now, we’ll just use a rough guess for the PSF.</p>
 </div>
 </section>
 <section id="loading-the-images-and-creating-the-camera-instance">
-<h2>Loading the Images and Creating the Camera Instance<a class="headerlink" href="#loading-the-images-and-creating-the-camera-instance" title="Permalink to this headline">¶</a></h2>
+<h2>Loading the Images and Creating the Camera Instance<a class="headerlink" href="#loading-the-images-and-creating-the-camera-instance" title="Permalink to this heading">¶</a></h2>
 <p>Now we can ask GIANT to load all of our images and create our camera instance.  This is simply done by initializing our
 <code class="docutils literal notranslate"><span class="pre">DawnFCCamera</span></code> class as we did in the calibration script.  The only difference now is that we also provide our PSF to
 the camera initializer so that GIANT knows about it.</p>
@@ -203,7 +209,7 @@ the camera initializer so that GIANT knows about it.</p>
 </div>
 </section>
 <section id="estimating-the-rotation-using-star-images">
-<h2>Estimating the Rotation Using Star Images<a class="headerlink" href="#estimating-the-rotation-using-star-images" title="Permalink to this headline">¶</a></h2>
+<h2>Estimating the Rotation Using Star Images<a class="headerlink" href="#estimating-the-rotation-using-star-images" title="Permalink to this heading">¶</a></h2>
 <p>With our camera object created, we can now start estimating the attitude in the long-exposure images using star
 observations.  This is extremely similar to how we perform camera calibration, but we use the <a class="reference internal" href="../stellar_opnav/stellar_class/giant.stellar_opnav.stellar_class.StellarOpNav.html#giant.stellar_opnav.stellar_class.StellarOpNav" title="giant.stellar_opnav.stellar_class.StellarOpNav"><code class="xref py py-class docutils literal notranslate"><span class="pre">StellarOpNav</span></code></a>
 class instead and we only estimate the attitude, not the calibration.  Plus, we only want to look for stars in long
@@ -241,7 +247,7 @@ move on then comment out the line with the <a class="reference internal" href=".
 the script.</p>
 </section>
 <section id="updating-the-short-exposure-image-rotation">
-<h2>Updating the Short Exposure Image Rotation<a class="headerlink" href="#updating-the-short-exposure-image-rotation" title="Permalink to this headline">¶</a></h2>
+<h2>Updating the Short Exposure Image Rotation<a class="headerlink" href="#updating-the-short-exposure-image-rotation" title="Permalink to this heading">¶</a></h2>
 <p>With the long exposure image attitudes corrected, we now want to use this information to update our short-exposure image
 attitudes.  This is done in 2 steps.  First, we turn on the only the short exposure images using the
 <a class="reference internal" href="../camera/giant.camera.Camera.only_short_on.html#giant.camera.Camera.only_short_on" title="giant.camera.Camera.only_short_on"><code class="xref py py-meth docutils literal notranslate"><span class="pre">only_short_on()</span></code></a> method.  Then, we call the <a class="reference internal" href="../camera/giant.camera.Camera.update_short_attitude.html#giant.camera.Camera.update_short_attitude" title="giant.camera.Camera.update_short_attitude"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_short_attitude()</span></code></a> method which
@@ -255,7 +261,7 @@ propagates the solved for attitudes in the long-exposure images to the following
 </div>
 </section>
 <section id="defining-the-opnav-scene">
-<h2>Defining the OpNav Scene<a class="headerlink" href="#defining-the-opnav-scene" title="Permalink to this headline">¶</a></h2>
+<h2>Defining the OpNav Scene<a class="headerlink" href="#defining-the-opnav-scene" title="Permalink to this heading">¶</a></h2>
 <p>Now that we have updated the attitude for the short-exposure images we need to define the OpNav scene.  The OpNav scene
 tells GIANT what objects to expect in the images, as well as their relative position and orientation with respect to
 each other.  For the DAWN approach to Vesta, we only have 3 objects we need to worry about in our scene: (1) the camera,
@@ -302,7 +308,7 @@ in the same scene, therefore we wrap the Vesta object in a list.  The sun become
 </div>
 </section>
 <section id="creating-the-relnav-instance-and-extracting-the-observables">
-<h2>Creating the RelNav Instance and extracting the observables<a class="headerlink" href="#creating-the-relnav-instance-and-extracting-the-observables" title="Permalink to this headline">¶</a></h2>
+<h2>Creating the RelNav Instance and extracting the observables<a class="headerlink" href="#creating-the-relnav-instance-and-extracting-the-observables" title="Permalink to this heading">¶</a></h2>
 <p>With the scene defined we can now create our <a class="reference internal" href="../relative_opnav/relnav_class/giant.relative_opnav.relnav_class.RelativeOpNav.html#giant.relative_opnav.relnav_class.RelativeOpNav" title="giant.relative_opnav.relnav_class.RelativeOpNav"><code class="xref py py-class docutils literal notranslate"><span class="pre">RelativeOpNav</span></code></a> instance.  The <a class="reference internal" href="../relative_opnav/relnav_class/giant.relative_opnav.relnav_class.RelativeOpNav.html#giant.relative_opnav.relnav_class.RelativeOpNav" title="giant.relative_opnav.relnav_class.RelativeOpNav"><code class="xref py py-class docutils literal notranslate"><span class="pre">RelativeOpNav</span></code></a> class
 behaves very similarly to the <a class="reference internal" href="../stellar_opnav/stellar_class/giant.stellar_opnav.stellar_class.StellarOpNav.html#giant.stellar_opnav.stellar_class.StellarOpNav" title="giant.stellar_opnav.stellar_class.StellarOpNav"><code class="xref py py-class docutils literal notranslate"><span class="pre">StellarOpNav</span></code></a> and <a class="reference internal" href="../calibration/calibration_class/giant.calibration.calibration_class.Calibration.html#giant.calibration.calibration_class.Calibration" title="giant.calibration.calibration_class.Calibration"><code class="xref py py-class docutils literal notranslate"><span class="pre">Calibration</span></code></a> classes, but exposes methods and settings
 for performing Relative Navigation instead of Stellar Navigation and Calibration.</p>
@@ -369,7 +375,7 @@ need to update matplotlib by doing <code class="docutils literal notranslate"><s
 <p>You can finish now, or you can try playing around with images from other OpNav days.</p>
 </section>
 <section id="the-complete-opnav-script">
-<h2>The Complete OpNav Script<a class="headerlink" href="#the-complete-opnav-script" title="Permalink to this headline">¶</a></h2>
+<h2>The Complete OpNav Script<a class="headerlink" href="#the-complete-opnav-script" title="Permalink to this heading">¶</a></h2>
 <p>For your convenience, the complete <code class="docutils literal notranslate"><span class="pre">opnav.py</span></code> script is presented here.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># a utility for retrieving a list of files using glob patterns</span>
 <span class="kn">import</span> <span class="nn">glob</span>
@@ -511,7 +517,7 @@ need to update matplotlib by doing <code class="docutils literal notranslate"><s
 </section>
 </section>
 <section id="conclusion">
-<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">¶</a></h1>
 <p>And that’s the basics of GIANT.  We successfully generated a camera model from star images and extracted
 center-of-figure observables from OpNav images for the DAWN approach to Vesta.
 There is certainly much more you can do with GIANT, but this provides a general
@@ -542,19 +548,19 @@ read through the rest of the documentation.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2021 United States Government.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="../_sources/tutorial/opnav.rst.txt"
-          rel="nofollow">Page source</a>
+        &copy;2023 United States Government | 
+        NASA Official: <a href="mailto:andrew.j.liounis@nasa.gov">Andrew Liounis</a> |
+        Curator: <a href="mailto:andrew.j.liounis@nasa.gov">Andrew Liounis</a> 
+        <br>
+            Last updated on Mar 08, 2023 |
+        
+        |
+        Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
+        &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+        
+        |
+        <a href="../_sources/tutorial/opnav.rst.txt"
+            rel="nofollow">Page source</a>
     </div>
-
-    
-
-    
   </body>
 </html>
