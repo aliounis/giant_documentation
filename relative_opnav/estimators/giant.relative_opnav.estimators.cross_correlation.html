@@ -152,38 +152,38 @@ shape model and decent a priori state information.  Beyond that, parameters you 
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">brdf</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="cross_correlation/giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.html#giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.brdf" title="giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.brdf"><code class="xref py py-attr docutils literal notranslate"><span class="pre">brdf</span></code></a></p></td>
 <td><p>The bidirectional reflectance distribution function used to compute the
 expected illumination of a ray based on the geometry of the scene.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">grid_size</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="cross_correlation/giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.html#giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.grid_size" title="giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.grid_size"><code class="xref py py-attr docutils literal notranslate"><span class="pre">grid_size</span></code></a></p></td>
 <td><p>The size of the grid to use for subpixel sampling when rendering the template</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">peak_finder</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="cross_correlation/giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.html#giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.peak_finder" title="giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.peak_finder"><code class="xref py py-attr docutils literal notranslate"><span class="pre">peak_finder</span></code></a></p></td>
 <td><p>The function to use to detect the peak of the correlation surface.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">blur</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="cross_correlation/giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.html#giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.blur" title="giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.blur"><code class="xref py py-attr docutils literal notranslate"><span class="pre">blur</span></code></a></p></td>
 <td><p>A flag specifying whether to blur the correlation surface to decrease high
 frequency noise before identifying the peak.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">search_region</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="cross_correlation/giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.html#giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.search_region" title="giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.search_region"><code class="xref py py-attr docutils literal notranslate"><span class="pre">search_region</span></code></a></p></td>
 <td><p>An optional search region in pixels to restrict the area the peak of the
 correlation surface is search for around the a priori predicted center</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">min_corr_score</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="cross_correlation/giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.html#giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.min_corr_score" title="giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.min_corr_score"><code class="xref py py-attr docutils literal notranslate"><span class="pre">min_corr_score</span></code></a></p></td>
 <td><p>The minimum correlation score to accept as a successful identification.
 Correlation scores range from -1 to 1, with 1 indicating perfect correlation.</p></td>
 </tr>
 </tbody>
 </table>
 <p>Of these options, most only make small changes to the results.  The 2 that can occasionally make large changes are
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">search_region</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">blur</span></code>.  In general
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">search_region</span></code> should be left at <code class="docutils literal notranslate"><span class="pre">None</span></code> which searches the whole image.  However, if your
+<a class="reference internal" href="cross_correlation/giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.html#giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.search_region" title="giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.search_region"><code class="xref py py-attr docutils literal notranslate"><span class="pre">search_region</span></code></a> and <a class="reference internal" href="cross_correlation/giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.html#giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.blur" title="giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.blur"><code class="xref py py-attr docutils literal notranslate"><span class="pre">blur</span></code></a>.  In general
+<a class="reference internal" href="cross_correlation/giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.html#giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.search_region" title="giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.search_region"><code class="xref py py-attr docutils literal notranslate"><span class="pre">search_region</span></code></a> should be left at <code class="docutils literal notranslate"><span class="pre">None</span></code> which searches the whole image.  However, if your
 object is nearly unresolved (&lt;10 pixels across or so) and your a priori knowledge is pretty good, then it may be
 beneficial to set this to a smallish number to ensure that you don’t mistakenly correlate with a noise spike or bright
-star.  The <code class="xref py py-attr docutils literal notranslate"><span class="pre">blur</span></code> attribute can also be used to help avoid correlating with a star but in
+star.  The <a class="reference internal" href="cross_correlation/giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.html#giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.blur" title="giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.blur"><code class="xref py py-attr docutils literal notranslate"><span class="pre">blur</span></code></a> attribute can also be used to help avoid correlating with a star but in
 general should be left as <code class="docutils literal notranslate"><span class="pre">False</span></code> unless the object is small (&lt;7-10 pixels).  Finally, the
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">min_corr_score</span></code> can generally be left at the default, though if you have a poor a priori
+<a class="reference internal" href="cross_correlation/giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.html#giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.min_corr_score" title="giant.relative_opnav.estimators.cross_correlation.XCorrCenterFinding.min_corr_score"><code class="xref py py-attr docutils literal notranslate"><span class="pre">min_corr_score</span></code></a> can generally be left at the default, though if you have a poor a priori
 knowledge of either the shape model or the relative position of the object then you may need to decrease this some.</p>
 </section>
 <section id="use">

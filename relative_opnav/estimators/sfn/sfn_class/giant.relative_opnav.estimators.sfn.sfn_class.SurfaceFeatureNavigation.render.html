@@ -133,11 +133,11 @@ intensity of each ray into a 2D template array. The rendered templates are store
 attribute.</p>
 <p>Additionally, this method also produces a 2D boolean array specifying which pixels in the template had rays
 which actually struck the surface of the feature (<code class="docutils literal notranslate"><span class="pre">True</span></code>) and which hit empty space (<code class="docutils literal notranslate"><span class="pre">False</span></code>) for use in
-the correlation of the template with the image.  Finally, it also computes the <code class="xref py py-attr docutils literal notranslate"><span class="pre">computed_bearings</span></code> for
+the correlation of the template with the image.  Finally, it also computes the <a class="reference internal" href="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.html#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.computed_bearings" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.computed_bearings"><code class="xref py py-attr docutils literal notranslate"><span class="pre">computed_bearings</span></code></a> for
 each visible template by projecting the template center onto the image using the camera model and storing it
 in a 2xn array.</p>
 <p>Note that before calling this method you must have set the visible feature list in the image to the
-<a class="reference internal" href="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.html#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.visible_features" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.visible_features"><code class="xref py py-attr docutils literal notranslate"><span class="pre">visible_features</span></code></a> attribute.</p>
+<a class="reference internal" href="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.html#id0" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.visible_features"><code class="xref py py-attr docutils literal notranslate"><span class="pre">visible_features</span></code></a> attribute.</p>
 <p>Typically this method is not used directly by the user and instead is called by the <a class="reference internal" href="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.estimate.html#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.estimate" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.estimate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">estimate()</span></code></a> method
 automatically.</p>
 <dl class="field-list simple">

@@ -130,9 +130,9 @@ and is performed for each requested target.  Note that targets must have shapes 
 this class.</p>
 <p>When all of the required data has been successfully loaded into an instance of this class, the <a class="reference internal" href="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.estimate.html#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.estimate" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.estimate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">estimate()</span></code></a>
 method is used to perform the estimation for the requested image.  The results are stored into the
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">observed_bearings</span></code> attribute for the observed center of template locations. In addition, the predicted
-locations for the center of template for each template is stored in the <code class="xref py py-attr docutils literal notranslate"><span class="pre">computed_bearings</span></code> attribute.
-Finally, the details about the fit are stored as a dictionary in the appropriate element in the <code class="xref py py-attr docutils literal notranslate"><span class="pre">details</span></code>
+<a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.observed_bearings" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.observed_bearings"><code class="xref py py-attr docutils literal notranslate"><span class="pre">observed_bearings</span></code></a> attribute for the observed center of template locations. In addition, the predicted
+locations for the center of template for each template is stored in the <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.computed_bearings" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.computed_bearings"><code class="xref py py-attr docutils literal notranslate"><span class="pre">computed_bearings</span></code></a> attribute.
+Finally, the details about the fit are stored as a dictionary in the appropriate element in the <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.details" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.details"><code class="xref py py-attr docutils literal notranslate"><span class="pre">details</span></code></a>
 attribute.  Specifically, these dictionaries will contain the following keys.</p>
 <table class="docutils align-default">
 <thead>
@@ -265,21 +265,21 @@ the RANSAC component of the PnP solver</p></li>
 after correcting errors using the PnP solver.</p></li>
 <li><p><strong>measurement_sigma</strong> (<em>Sequence</em><em> | </em><em>ndarray</em><em> | </em><em>Real</em>) – The uncertainty to assume for each measurement in pixels. This is used to set the
 relative weight between the observed landmarks are the a priori knowledge in the PnP
-problem. See the <code class="xref py py-attr docutils literal notranslate"><span class="pre">measurement_sigma</span></code> documentation for a description of valid
+problem. See the <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.measurement_sigma" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.measurement_sigma"><code class="xref py py-attr docutils literal notranslate"><span class="pre">measurement_sigma</span></code></a> documentation for a description of valid
 inputs.</p></li>
 <li><p><strong>position_sigma</strong> (<em>Sequence</em><em> | </em><em>ndarray</em><em> | </em><em>Real</em><em> | </em><em>None</em>) – The uncertainty to assume for the relative position vector in kilometers. This is used to
 set the relative weight between the observed landmarks and the a priori knowledge in the
-PnP problem. See the <code class="xref py py-attr docutils literal notranslate"><span class="pre">position_sigma</span></code> documentation for a description of valid
+PnP problem. See the <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.position_sigma" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.position_sigma"><code class="xref py py-attr docutils literal notranslate"><span class="pre">position_sigma</span></code></a> documentation for a description of valid
 inputs.  If the <code class="docutils literal notranslate"><span class="pre">state_sigma</span></code> input is not <code class="docutils literal notranslate"><span class="pre">None</span></code> then this is ignored.</p></li>
 <li><p><strong>attitude_sigma</strong> (<em>Sequence</em><em> | </em><em>ndarray</em><em> | </em><em>Real</em><em> | </em><em>None</em>) – The uncertainty to assume for the relative orientation rotation vector in radians. This
 is used to set the relative weight between the observed landmarks and the a priori
-knowledge in the PnP problem. See the <code class="xref py py-attr docutils literal notranslate"><span class="pre">attitude_sigma</span></code> documentation for a
+knowledge in the PnP problem. See the <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.attitude_sigma" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.attitude_sigma"><code class="xref py py-attr docutils literal notranslate"><span class="pre">attitude_sigma</span></code></a> documentation for a
 description of valid inputs.  If the <code class="docutils literal notranslate"><span class="pre">state_sigma</span></code> input is not <code class="docutils literal notranslate"><span class="pre">None</span></code> then this is
 ignored.</p></li>
 <li><p><strong>state_sigma</strong> (<em>Sequence</em><em> | </em><em>ndarray</em><em> | </em><em>None</em>) – The uncertainty to assume for the relative position vector and orientation rotation vector
 in kilometers and radians respectively. This is used to set the relative weight between the
 observed landmarks and the a priori knowledge in the PnP problem. See the
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">state_sigma</span></code> documentation for a description of valid inputs.  If this input is not
+<a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma"><code class="xref py py-attr docutils literal notranslate"><span class="pre">state_sigma</span></code></a> documentation for a description of valid inputs.  If this input is not
 <code class="docutils literal notranslate"><span class="pre">None</span></code> then the <code class="docutils literal notranslate"><span class="pre">attitude_sigma</span></code> and <code class="docutils literal notranslate"><span class="pre">position_sigma</span></code> inputs are ignored.</p></li>
 <li><p><strong>max_lsq_iterations</strong> (<em>int</em><em> | </em><em>None</em>) – The maximum number of iterations to make in the least squares solution to the PnP
 problem.</p></li>
@@ -320,6 +320,15 @@ it will be used to make attribute/method names.  (That is <code class="docutils 
 <code class="docutils literal notranslate"><span class="pre">True</span></code>).</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.run_pnp_solver">
+<span class="sig-name descname"><span class="pre">run_pnp_solver</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.run_pnp_solver" title="Permalink to this definition">¶</a></dt>
+<dd><p>This turns on/off the PnP solver that attempts to estimate the best position/pointing for each image based on
+the observed landmark locations in the image.</p>
+<p>The PnP solver is useful if you expect a large initial error in your camera position, particularly radially, 
+since it can help to reduce biases that can occur based on distortion fields and scale errors.</p>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.camera">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">camera</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../../camera/giant.camera.Camera.html#giant.camera.Camera" title="giant.camera.Camera"><span class="pre">Camera</span></a></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.camera" title="Permalink to this definition">¶</a></dt>
@@ -348,10 +357,272 @@ or not.</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.observed_bearings">
+<span class="sig-name descname"><span class="pre">observed_bearings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">NONEARRAY</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.observed_bearings" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of the observed bearings in the image where each element corresponds to
+the same element in the <a class="reference internal" href="../../../../ray_tracer/scene/giant.ray_tracer.scene.Scene.html#giant.ray_tracer.scene.Scene.target_objs" title="giant.ray_tracer.scene.Scene.target_objs"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Scene.target_objs</span></code></a> list.</p>
+<p>The list elements should be numpy arrays or <code class="docutils literal notranslate"><span class="pre">None</span></code> if the the target wasn’t considered for some reason.  If
+numpy arrays they should contain the pixel locations as (x, y) or (col, row).  This does not always need to be 
+filled out.</p>
+<p>This is were you should store results for <code class="docutils literal notranslate"><span class="pre">CENTER-FINDING,</span> <span class="pre">LIMB,</span> <span class="pre">LANDMARK,</span> <span class="pre">CONSTRAINT</span></code> techniques.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.computed_bearings">
+<span class="sig-name descname"><span class="pre">computed_bearings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">NONEARRAY</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.computed_bearings" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of the computed (predicted) bearings in the image where each element corresponds to
+the same element in the <a class="reference internal" href="../../../../ray_tracer/scene/giant.ray_tracer.scene.Scene.html#giant.ray_tracer.scene.Scene.target_objs" title="giant.ray_tracer.scene.Scene.target_objs"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Scene.target_objs</span></code></a> list.</p>
+<p>The list elements should be numpy arrays or <code class="docutils literal notranslate"><span class="pre">None</span></code> if the the target wasn’t considered for some reason.  If
+numpy arrays they should contain the pixel locations as (x, y) or (col, row).  This does not always need to be 
+filled out.</p>
+<p>This is were you should store results for <code class="docutils literal notranslate"><span class="pre">CENTER-FINDING,</span> <span class="pre">LIMB,</span> <span class="pre">LANDMARK,</span> <span class="pre">CONSTRAINT</span></code> techniques.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.pnp_ransac_iterations">
+<span class="sig-name descname"><span class="pre">pnp_ransac_iterations</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.pnp_ransac_iterations" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of RANSAC iterations to go through in the PnP solver, if being used.</p>
+<p>The RANSAC algorithm can help to reject outliers from the PnP solution, making it much more useful, therefore it 
+is strongly encouraged to use it.  To disable the RANSAC algorithm set this to 0.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.second_search_region">
+<span class="sig-name descname"><span class="pre">second_search_region</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.second_search_region" title="Permalink to this definition">¶</a></dt>
+<dd><p>The second search region is used as the search region after completing a PnP iteration.</p>
+<p>This is useful to reject outliers from the set of landmarks found after the PnP iteration since they will not be
+run through the PnP solver/RANSAC algorithms.</p>
+<p>Typically this should be no less than 3 pixels to ensure that we have enough rough to identify the peak of the 
+correlation surface.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.measurement_sigma">
+<span class="sig-name descname"><span class="pre">measurement_sigma</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">SCALAR_OR_ARRAY</span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.measurement_sigma" title="Permalink to this definition">¶</a></dt>
+<dd><p>The 1 sigma uncertainty for the measurement as either a scalar (same uncertainty for each axis, no correlation),
+a 1D array of length 2 (different uncertainty for each axis x, y), or a 2D array of shape 2x2 (full measurement 
+covariance matrix).</p>
+<p>This measurement sigma is applied to every measurement equally in the PnP solver and is used to weight the 
+observations with respect to the a priori state.  The default is 1 pixel for each axis.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.position_sigma">
+<span class="sig-name descname"><span class="pre">position_sigma</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">SCALAR_OR_ARRAY</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.position_sigma" title="Permalink to this definition">¶</a></dt>
+<dd><p>The 1 sigma uncertainty of the a priori relative position between the camera and the target in units of 
+kilometers.</p>
+<p>This can be provided as a scalar, in which case the sigma is applied to each axis of the position vector, a 1D 
+array of length 3 where the sigma is specified per axis (x,y,z), or as a 2D array of shape 3x3 where the full 
+position covariance matrix is provided.</p>
+<p>This sigma is applied to the state update portion of the PnP solver to weight the a priori state vs the
+the measurement observations.</p>
+<p>If this is set to <code class="docutils literal notranslate"><span class="pre">None</span></code> then we will check if <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma"><code class="xref py py-attr docutils literal notranslate"><span class="pre">state_sigma</span></code></a> is not <code class="docutils literal notranslate"><span class="pre">None</span></code> and use that instead.
+If <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma"><code class="xref py py-attr docutils literal notranslate"><span class="pre">state_sigma</span></code></a> is also <code class="docutils literal notranslate"><span class="pre">None</span></code> we will assume this to be 1 kilometer for each axis.  If both 
+<a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma"><code class="xref py py-attr docutils literal notranslate"><span class="pre">state_sigma</span></code></a> and this attribute are not <code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma"><code class="xref py py-attr docutils literal notranslate"><span class="pre">state_sigma</span></code></a> will take precedence.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.attitude_sigma">
+<span class="sig-name descname"><span class="pre">attitude_sigma</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">SCALAR_OR_ARRAY</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.attitude_sigma" title="Permalink to this definition">¶</a></dt>
+<dd><p>The 1 sigma uncertainty of the a priori relative orientation between the camera and the target in units of 
+radians.</p>
+<p>The relative orientation is expressed as a length 3 rotation vector (a unit vector specifying the rotation axis 
+multiplied by the angle to rotate about that axis in radians).</p>
+<p>This can be provided as a scalar, in which case the sigma is applied to each axis of the rotation vector, a 1D 
+array of length 3 where the sigma is specified per axis (x,y,z), or as a 2D array of shape 3x3 where the full 
+rotation covariance matrix is provided.</p>
+<p>This sigma is applied to the state update portion of the PnP solver to weight the a priori state vs the
+the measurement observations</p>
+<p>If this is set to <code class="docutils literal notranslate"><span class="pre">None</span></code> then we will check if <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma"><code class="xref py py-attr docutils literal notranslate"><span class="pre">state_sigma</span></code></a> is not <code class="docutils literal notranslate"><span class="pre">None</span></code> and use that instead.
+If <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma"><code class="xref py py-attr docutils literal notranslate"><span class="pre">state_sigma</span></code></a> is also <code class="docutils literal notranslate"><span class="pre">None</span></code> we will assume this to be 0.02 degrees for each axis of the rotation 
+vector.  If both <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma"><code class="xref py py-attr docutils literal notranslate"><span class="pre">state_sigma</span></code></a> and this attribute are not <code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma"><code class="xref py py-attr docutils literal notranslate"><span class="pre">state_sigma</span></code></a> will take 
+precedence.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma">
+<span class="sig-name descname"><span class="pre">state_sigma</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">NONEARRAY</span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.state_sigma" title="Permalink to this definition">¶</a></dt>
+<dd><p>The 1 sigma uncertainty of the a priori relative state (position+orientation) between the camera and the target.</p>
+<p>The state vector is the concatenation of the relative position vector in kilometers, and a length 3 rotation 
+vector (a unit vector specifying the rotation axis multiplied by the angle to rotate about that axis in 
+radians).</p>
+<p>This can be provided as a 1D length 6 array, in which case the first 3 elements are applied to the relative 
+position with units of kilometers and the last 3 elements are applied to the rotation vector with units of 
+radians, or as a 2D 6x6 state covariance matrix.</p>
+<p>This sigma is applied to the state update portion of the PnP solver to weight the a priori state vs the
+the measurement observations</p>
+<p>If this is set to <code class="docutils literal notranslate"><span class="pre">None</span></code> then we will use <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.position_sigma" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.position_sigma"><code class="xref py py-attr docutils literal notranslate"><span class="pre">position_sigma</span></code></a> and <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.attitude_sigma" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.attitude_sigma"><code class="xref py py-attr docutils literal notranslate"><span class="pre">attitude_sigma</span></code></a> instead.  If this
+is not <code class="docutils literal notranslate"><span class="pre">None</span></code> then it will take precedence over anything set in <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.position_sigma" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.position_sigma"><code class="xref py py-attr docutils literal notranslate"><span class="pre">position_sigma</span></code></a> and 
+<a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.attitude_sigma" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.attitude_sigma"><code class="xref py py-attr docutils literal notranslate"><span class="pre">attitude_sigma</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.max_lsq_iterations">
+<span class="sig-name descname"><span class="pre">max_lsq_iterations</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.max_lsq_iterations" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum number of iteration steps to take when trying to solve the PnP problem.</p>
+<p>If this is set to <code class="docutils literal notranslate"><span class="pre">None</span></code> then the maximum number of steps will be set to approximately <code class="docutils literal notranslate"><span class="pre">100*(N+7)</span></code> where 
+<code class="docutils literal notranslate"><span class="pre">N</span></code> is the number of measurements (2 times the number of landmarks observed).  Typically things converge much
+faster than this however.</p>
+<p>This is passed to the <code class="docutils literal notranslate"><span class="pre">max_nfev</span></code> argument in the <code class="docutils literal notranslate"><span class="pre">least_squares</span></code> solver from scipy.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.lsq_relative_error_tolerance">
+<span class="sig-name descname"><span class="pre">lsq_relative_error_tolerance</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.lsq_relative_error_tolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>The relative error tolerance condition at which the least squares solution is considered final.</p>
+<p>This essentially stops solving the linearized least squares problem once the change in the error (residuals) 
+from one iteration to the next is less than this value times the actual measurement values.</p>
+<p>This is passed to the <code class="docutils literal notranslate"><span class="pre">ftol</span></code> argument in the <code class="docutils literal notranslate"><span class="pre">least_squares</span></code> solver from scipy.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.cf_results">
+<span class="sig-name descname"><span class="pre">cf_results</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">NONEARRAY</span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.cf_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>A numpy array specifying the location of the center of figure of the target body in each image.</p>
+<p>This is used to correct any large shift errors in the image plane before attempting to find features on the 
+target.  This can be very useful as surface feature navigation typically works best when there are smaller a 
+priori error.  The way it is used is that after updating the <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.scene" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.scene"><code class="xref py py-attr docutils literal notranslate"><span class="pre">scene</span></code></a> for the current image, the location 
+of each target being estimated is shifted to lie along the line of sight vector specified by this input at the 
+same distance as before.</p>
+<p>This should be a 2D numpy array of shape at least n_images x n_feature_catalogues where n_images are the number
+of images in the <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.camera" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.camera"><code class="xref py py-attr docutils literal notranslate"><span class="pre">camera</span></code></a> and n_feature_catalogues are the number of feature catalogues in the 
+<a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.scene" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.scene"><code class="xref py py-attr docutils literal notranslate"><span class="pre">scene</span></code></a> with a dtype of <code class="xref py py-attr docutils literal notranslate"><span class="pre">RESULTS_DTYPE</span></code>.  By default it is assumed that each column of this array
+corresponds to each feature catalogue in the scene in order, however, you can change this using the 
+<a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.cf_index" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.cf_index"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cf_index</span></code></a> attribute.</p>
+<p>If this is set to <code class="docutils literal notranslate"><span class="pre">None</span></code> then the a priori knowledge of the relative state between the camera and the target 
+is not modified.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.cf_index">
+<span class="sig-name descname"><span class="pre">cf_index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.cf_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>The key to map each feature catalogue included in the scene (in order) to the corresponding column of the 
+<a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.cf_results" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.cf_results"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cf_results</span></code></a> when correcting gross shifts in the a priori knowledge of the camera relative to the target.</p>
+<p>By default this assumes that each column of the <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.cf_results" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.cf_results"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cf_results</span></code></a> array corresponds to the each feature 
+catalogue in the <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.scene" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.scene"><code class="xref py py-attr docutils literal notranslate"><span class="pre">scene</span></code></a> in order.  This works well in many cases where you’re considering only a single
+target in the image (and thus have the global shape as the first target, and the feature catalogue as the second 
+target) but if you have multiple bodies then you may need to modify this. 
+For instance say you have 2 bodies in the images.  In you <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.scene" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.scene"><code class="xref py py-attr docutils literal notranslate"><span class="pre">scene</span></code></a> you have the global shape of the first 
+body  as the first target, the feature catalogue for the first body as the second target, the global shape of 
+the second body as the third target, and the feature catalogue for the second body as the fourth target. In 
+this case you would want to make this attribute be [0, 2] to map the first feature catalogue to the first target
+results and the second catalogue to the third target results.  We admit this is slightly confusing so best 
+practice is to use separate scenes for global shapes and feature catalogues using the same order in each.</p>
+<p>If <a class="reference internal" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.cf_results" title="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.cf_results"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cf_results</span></code></a> is <code class="docutils literal notranslate"><span class="pre">None</span></code> then this attribute is ignored.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.show_templates">
+<span class="sig-name descname"><span class="pre">show_templates</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.show_templates" title="Permalink to this definition">¶</a></dt>
+<dd><p>This flag specifies to show the templates/images as they are correlated.</p>
+<p>This can be useful for debugging (if you aren’t finding any features in images for instance) but also is 
+unsuitable for any type of batch processing, therefore you should rarely use this option.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.visible_features">
 <span class="sig-name descname"><span class="pre">visible_features</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.visible_features" title="Permalink to this definition">¶</a></dt>
 <dd><p>This variable is used to notify which features are predicted to be visible in the image.</p>
 <p>Each visible feature is identified by its index in the <code class="xref py py-attr docutils literal notranslate"><span class="pre">FeatureCatalogue.features</span></code> list.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">visible_features</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>This variable is used to notify which features are predicted to be visible in the image.</p>
+<p>Each visible feature is identified by its index in the <code class="xref py py-attr docutils literal notranslate"><span class="pre">FeatureCatalogue.features</span></code> list.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.details">
+<span class="sig-name descname"><span class="pre">details</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#giant.relative_opnav.estimators.sfn.sfn_class.SurfaceFeatureNavigation.details" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'Correlation</span> <span class="pre">Scores'</span></code></p></td>
+<td><p>The correlation score at the peak of the correlation surface for each feature as a
+list of floats. The corresponding element will be 0 for any features that were not
+found.  Each element of this list corresponds to the feature according to the
+corresponding element in the <code class="docutils literal notranslate"><span class="pre">'Visible</span> <span class="pre">Features'</span></code> list. If no potential visible
+features were expected in the image then this is not available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'Visible</span> <span class="pre">Features'</span></code></p></td>
+<td><p>The list of feature indices (into the <code class="xref py py-attr docutils literal notranslate"><span class="pre">FeatureCatalogue.features</span></code> list)
+that were looked for in the image.  Each element of this list corresponds to the
+corresponding element in the <code class="xref py py-attr docutils literal notranslate"><span class="pre">templates</span></code> list.  If no potential visible
+features were expected in the image then this is not available.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'Correlation</span> <span class="pre">Peak</span> <span class="pre">Locations'</span></code></p></td>
+<td><p>The Location of the correlation peaks before correcting it to find the location of
+the location of the feature in the image as a list of size 2 numpy arrays. Each
+element of this list corresponds to the feature according to the corresponding
+element in the <code class="docutils literal notranslate"><span class="pre">'Visible</span> <span class="pre">Features'</span></code> list.  Any features that were not found in
+the image have <code class="docutils literal notranslate"><span class="pre">np.nan</span></code> for their values.  If no potential visible features were
+expected in the image then this is not available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'Correlation</span> <span class="pre">Surfaces'</span></code></p></td>
+<td><p>The raw correlation surfaces as 2D arrays of shape
+<code class="docutils literal notranslate"><span class="pre">2*search_region+1</span> <span class="pre">x</span> <span class="pre">2*search_region+1</span></code>.  Each pixel in the correlation surface
+represents a shift between the predicted and expected location, according to
+<a class="reference internal" href="../sfn_correlators/giant.relative_opnav.estimators.sfn.sfn_correlators.sfn_correlator.html#giant.relative_opnav.estimators.sfn.sfn_correlators.sfn_correlator" title="giant.relative_opnav.estimators.sfn.sfn_correlators.sfn_correlator"><code class="xref py py-func docutils literal notranslate"><span class="pre">sfn_correlator()</span></code></a>.  Each element of this list corresponds to the feature
+according to the corresponding element in the <code class="docutils literal notranslate"><span class="pre">'Visible</span> <span class="pre">Features'</span></code> list.  If no
+potential visible features were expected in the image then this is not available.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'Target</span> <span class="pre">Template</span> <span class="pre">Coordinates'</span></code></p></td>
+<td><p>The location of the center of each feature in its corresponding template. Each
+element of this list corresponds to the feature according to the corresponding
+element in the <code class="docutils literal notranslate"><span class="pre">'Visible</span> <span class="pre">Features'</span></code> list.  If no potential visible features
+were expected in the image then this is not available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'Intersect</span> <span class="pre">Masks'</span></code></p></td>
+<td><p>The boolean arrays the shape shapes of each rendered template with <code class="docutils literal notranslate"><span class="pre">True</span></code> where
+a ray through that pixel struct the surface of the template and <code class="docutils literal notranslate"><span class="pre">False</span></code>
+otherwise. Each element of this list corresponds to the feature according to the
+corresponding element in the <code class="docutils literal notranslate"><span class="pre">'Visible</span> <span class="pre">Features'</span></code> list.  If no potential
+visible features were expected in the image then this is not available.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'Space</span> <span class="pre">Mask'</span></code></p></td>
+<td><p>The boolean array the same shape as the image specifying which pixels of the image
+we thought were empty space with a <code class="docutils literal notranslate"><span class="pre">True</span></code> and which we though were on the body
+with a <code class="docutils literal notranslate"><span class="pre">False</span></code>.  If no potential visible features were expected in the image
+then this is not available</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'PnP</span> <span class="pre">Solution'</span></code></p></td>
+<td><p>A boolean indicating whether the PnP solution was successful (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or not.
+This is only available if a PnP solution was attempted.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'PnP</span> <span class="pre">Translation'</span></code></p></td>
+<td><p>The solved for translation in the original camera frame that minimizes the
+residuals in the PnP solution as a length 3 array with units of kilometers.  This
+is only available if a PnP solution was attempted and the PnP solution was
+successful.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'PnP</span> <span class="pre">Rotation'</span></code></p></td>
+<td><p>The solved for rotation of the original camera frame that minimizes the
+residuals in the PnP solution as a <a class="reference internal" href="../../../../rotations/giant.rotations.Rotation.html#giant.rotations.Rotation" title="giant.rotations.Rotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rotation</span></code></a>.  This
+is only available if a PnP solution was attempted and the PnP solution was
+successful.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'PnP</span> <span class="pre">Position'</span></code></p></td>
+<td><p>The solved for relative position of the target in the camera frame after the PnP
+solution is applied as a length 3 numpy array in km.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'PnP</span> <span class="pre">Orientation'</span></code></p></td>
+<td><p>The solved for relative orientation of the target frame with respect to the camera
+frame after the PnP solution is applied as a <a class="reference internal" href="../../../../rotations/giant.rotations.Rotation.html#giant.rotations.Rotation" title="giant.rotations.Rotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rotation</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'Failed'</span></code></p></td>
+<td><p>A message indicating why the SFN failed.  This will only be present if the SFN fit
+failed (so you could do something like <code class="docutils literal notranslate"><span class="pre">'Failed'</span> <span class="pre">in</span> <span class="pre">sfn.details[target_ind]</span></code> to
+check if something failed.  The message should be a human readable description of
+what caused the failure.</p></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>

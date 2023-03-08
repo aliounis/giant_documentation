@@ -126,7 +126,7 @@ there are much more accurate methods that can be used.</p>
 <p>In order to extract the center finding observables from this method a few steps are followed.  First, we predict roughly
 how many pixels we expect the illuminated portion our target to subtend based on the a priori scene knowledge and
 assuming a spherical target.  We then use this predicted area to set the minimum number of connected pixels we are
-going to consider a possible target in the image (this can be turned off using option <code class="xref py py-attr docutils literal notranslate"><span class="pre">use_apparent_area</span></code>.
+going to consider a possible target in the image (this can be turned off using option <a class="reference internal" href="moment_algorithm/giant.relative_opnav.estimators.moment_algorithm.MomentAlgorithm.html#giant.relative_opnav.estimators.moment_algorithm.MomentAlgorithm.use_apparent_area" title="giant.relative_opnav.estimators.moment_algorithm.MomentAlgorithm.use_apparent_area"><code class="xref py py-attr docutils literal notranslate"><span class="pre">use_apparent_area</span></code></a>.
 We then segment the image into foreground/background objects using method <code class="xref py py-meth docutils literal notranslate"><span class="pre">segment_image()</span></code> from image processing.
 For each target in the image we are processing, we then identify the closest segmented object from the image to the
 target and assume that this is the location of the target in the actual image (if you have multiple targets in an image

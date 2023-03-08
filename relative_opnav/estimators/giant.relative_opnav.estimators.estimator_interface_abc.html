@@ -148,10 +148,10 @@ results from the new technique are retrieved and stored by the
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="estimator_interface_abc/giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.html#giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.generates_templates" title="giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.generates_templates"><code class="xref py py-attr docutils literal notranslate"><span class="pre">generates_templates</span></code></a></p></td>
 <td><p>A boolean flag specifying whether this technique generates templates and
-stores them in the <code class="xref py py-attr docutils literal notranslate"><span class="pre">templates</span></code> attribute.
+stores them in the <a class="reference internal" href="estimator_interface_abc/giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.html#giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.templates" title="giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.templates"><code class="xref py py-attr docutils literal notranslate"><span class="pre">templates</span></code></a> attribute.
 If this is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then <a class="reference internal" href="../relnav_class/giant.relative_opnav.relnav_class.RelativeOpNav.html#giant.relative_opnav.relnav_class.RelativeOpNav" title="giant.relative_opnav.relnav_class.RelativeOpNav"><code class="xref py py-class docutils literal notranslate"><span class="pre">RelativeOpNav</span></code></a> may store the templates
 for further investigation by copying the
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">templates</span></code> attribute.</p></td>
+<a class="reference internal" href="estimator_interface_abc/giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.html#giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.templates" title="giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.templates"><code class="xref py py-attr docutils literal notranslate"><span class="pre">templates</span></code></a> attribute.</p></td>
 </tr>
 </tbody>
 </table>
@@ -178,7 +178,7 @@ is appropriately set up for each image.</p></td>
 <td><p>The instance of the <a class="reference internal" href="../../camera/giant.camera.Camera.html#giant.camera.Camera" title="giant.camera.Camera"><code class="xref py py-class docutils literal notranslate"><span class="pre">Camera</span></code></a> class which contains the camera model
 as well as other images.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">computed_bearings</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="estimator_interface_abc/giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.html#giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.computed_bearings" title="giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.computed_bearings"><code class="xref py py-attr docutils literal notranslate"><span class="pre">computed_bearings</span></code></a></p></td>
 <td><p>The attribute in which to store computed (predicted) bearing measurements
 as (x, y) in pixels. This is a list the length of the number of targets in
 the scene, and when a target is processed, it should put the bearing
@@ -187,7 +187,7 @@ measurements, these will be single (x,y) pairs.  For landmark/limb type
 measurements, these will be an nx2 array of (x,y) pairs for each landmark
 or feature</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">observed_bearings</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="estimator_interface_abc/giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.html#giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.observed_bearings" title="giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.observed_bearings"><code class="xref py py-attr docutils literal notranslate"><span class="pre">observed_bearings</span></code></a></p></td>
 <td><p>The attribute in which to store observed bearing measurements
 as (x, y) in pixels. This is a list the length of the number of targets in
 the scene, and when a target is processed, it should put the bearing
@@ -196,21 +196,21 @@ measurements, these will be single (x,y) pairs.  For landmark/limb type
 measurements, these will be an nx2 array of (x,y) pairs for each landmark
 or feature</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">computed_positions</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="estimator_interface_abc/giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.html#giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.computed_positions" title="giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.computed_positions"><code class="xref py py-attr docutils literal notranslate"><span class="pre">computed_positions</span></code></a></p></td>
 <td><p>The attribute in which to store computed (predicted) positions
 measurements as (x, y, z) in kilometers in the camera frame. This is a
 list the length of the number of targets in the scene, and when a target
 is processed, it should put the predicted position into the appropriate
 index.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">observed_positions</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="estimator_interface_abc/giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.html#giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.observed_positions" title="giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.observed_positions"><code class="xref py py-attr docutils literal notranslate"><span class="pre">observed_positions</span></code></a></p></td>
 <td><p>The attribute in which to store observed (measured) positions
 measurements as (x, y, z) in kilometers in the camera frame. This is a
 list the length of the number of targets in the scene, and when a target
 is processed, it should put the measured position into the appropriate
 index.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">templates</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="estimator_interface_abc/giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.html#giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.templates" title="giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.templates"><code class="xref py py-attr docutils literal notranslate"><span class="pre">templates</span></code></a></p></td>
 <td><p>The attribute in which templates should be stored for each target if
 templates are used for the technique.  This is a list the length of the
 number of targets in the scene, and when a target is processed, it should
@@ -220,7 +220,7 @@ arrays.  For landmark type techniques the templates are usually lists of
 2D numpy arrays, where each list element corresponds to the template for
 the corresponding landmark.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">details</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="estimator_interface_abc/giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.html#giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.details" title="giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.details"><code class="xref py py-attr docutils literal notranslate"><span class="pre">details</span></code></a></p></td>
 <td><p>This attribute can be used to store extra information about what happened
 when the technique was applied.  This should be a list the length of the
 number of targets in the scene, and when a target is processed, the
@@ -248,8 +248,8 @@ write custom code for them.</p></td>
 <td><p>This method should use the defined technique to extract observables from
 the image, depending on the type of the observables generated.  This is
 also where the computed (predicted) observables should be generated and
-stored, as well as fleshing out the <code class="xref py py-attr docutils literal notranslate"><span class="pre">details</span></code> and
-the <code class="xref py py-attr docutils literal notranslate"><span class="pre">templates</span></code> lists if applicable.  This method
+stored, as well as fleshing out the <a class="reference internal" href="estimator_interface_abc/giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.html#giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.details" title="giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.details"><code class="xref py py-attr docutils literal notranslate"><span class="pre">details</span></code></a> and
+the <a class="reference internal" href="estimator_interface_abc/giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.html#giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.templates" title="giant.relative_opnav.estimators.estimator_interface_abc.RelNavEstimator.templates"><code class="xref py py-attr docutils literal notranslate"><span class="pre">templates</span></code></a> lists if applicable.  This method
 should be capable of applying the technique to all targets in the scene,
 or to a specifically requested target.</p></td>
 </tr>
